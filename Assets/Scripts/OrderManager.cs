@@ -83,7 +83,6 @@ public class OrderManager : MonoBehaviour {
 
     public void delivered(Pizza pizza){
         int[] ingredientCount = new int[numIngredients];
-        Debug.Log(pizza);
 
         for(int i = 0; i < pizza.ingredients.Count; i++){
             ingredientCount[pizza.ingredients[i].type]++;
