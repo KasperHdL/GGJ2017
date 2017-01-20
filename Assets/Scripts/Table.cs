@@ -5,10 +5,13 @@ using UnityEngine;
 public class Table : MonoBehaviour {
 
     public float minPizzaTime = 2f;
+    public OrderManager orderManager;
+
     private List<GameObject> activePizzas;
     private List<float> acceptedTime;
 
 	void Start () {
+        orderManager = GameObject.Find("Systems").GetComponent<OrderManager>();
 
         activePizzas = new List<GameObject>();
         acceptedTime = new List<float>();
