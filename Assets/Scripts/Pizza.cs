@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pizza : MonoBehaviour {
 
+    public List<Ingredient> ingredients;
 
 	// Use this for initialization
 	void Start () {

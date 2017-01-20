@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Ingredient : MonoBehaviour {
 
+    public int type;
+
 	// Use this for initialization
 	void Start () {
 		
