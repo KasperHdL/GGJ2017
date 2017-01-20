@@ -21,6 +21,7 @@ public class Table : MonoBehaviour {
             if(Time.time >= acceptedTime[i]){
                 //TODO GIVE POINT REMOVE PIZZA N STUFF
 
+                ScoreManager.getInstance().score++;
                 Destroy(activePizzas[i]);
                 activePizzas.RemoveAt(i);
                 acceptedTime.RemoveAt(i);
