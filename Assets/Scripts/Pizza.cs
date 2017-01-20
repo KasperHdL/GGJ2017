@@ -15,4 +15,16 @@ public class Pizza : MonoBehaviour {
 	void Update () {
 		
 	}
+
+
+    void OnCollisionEnter(Collision coll){
+        if(coll.gameObject.tag == "Ingredient"){
+            coll.transform.SetParent(transform, true);
+            coll.transform.localScale = Vector3.one;
+            coll.transform.position = coll.contacts[0].point;
+            coll.transform.GetComponent<Rigidbody>().isKinematic = true;
+
+        }
+
+    }
 }

@@ -34,19 +34,24 @@ public class Table : MonoBehaviour {
 	}
 
     void OnCollisionEnter(Collision coll){
-        for(int i = 0;i < activePizzas.Count; i++){
-            if(coll.gameObject == activePizzas[i])
-                return;
+        if(coll.gameObject.tag == "Pizza"){
+            for(int i = 0;i < activePizzas.Count; i++){
+                if(coll.gameObject == activePizzas[i])
+                    return;
+            }
+            activePizzas.Add(coll.gameObject);
+            acceptedTime.Add(Time.time + minPizzaTime);
         }
-        activePizzas.Add(coll.gameObject);
-        acceptedTime.Add(Time.time + minPizzaTime);
     }
 
     void OnCollisionExit(Collision coll){
-        for(int i = 0;i < activePizzas.Count; i++){
-            if(coll.gameObject == activePizzas[i])
-                activePizzas.RemoveAt(i);
-                acceptedTime.RemoveAt(i);
+        if(coll.gameObject.tag == "Pizza"){
+            for(int i = 0;i < activePizzas.Count; i++){
+                if(coll.gameObject == activePizzas[i]){
+                    activePizzas.RemoveAt(i);
+                    acceptedTime.RemoveAt(i);
+                }
+            }
         }
 
     }
