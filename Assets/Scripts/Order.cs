@@ -10,23 +10,27 @@ public class Order : MonoBehaviour {
     public int id;
     public int slot;
     public int tableNumber;
-    public int[] ingredients;
+    public int[] ingredientCount;
 
     //UI References
     public Text tableNumberText;
     public Image[] ingredientImages;
 
-	public void set(int tableNumber, int[] ingredients) {
+	public void set(int tableNumber, int[] ingredientCount) {
         this.tableNumber = tableNumber;
-        this.ingredients = ingredients;
+        this.ingredientCount = ingredientCount;
         //go through ingredients
 
-        for(int i = 0; i < 9; i++){
-            if(i < ingredients.Length)
-                ingredientImages[i].sprite = model.ingredientSprites[ingredients[i]];
-            else
-                ingredientImages[i].enabled = false;
+        int total = 0;
+        for(int i = 0; i < ingredientCount.Length; i++){
+            for(int j = 0; j < ingredientCount[i]; j++){
+                ingredientImages[total].sprite = model.ingredientSprites[i];
+                ingredientImages[total].enabled = true;
+
+                total++;
+            }
         }
+
         tableNumberText.text = (tableNumber + 1) + "";
 	}
 	

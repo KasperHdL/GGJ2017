@@ -18,6 +18,18 @@ public class OrderManager : MonoBehaviour {
     public int orderCount = 0;
 
 
+    private static OrderManager instance;
+
+    public void Awake(){
+        if(instance != null)
+            throw new UnityException("Multiple order managers found");
+        instance = this;
+    }
+
+    public static OrderManager getInstance(){
+        return instance;
+    }
+
     public void Start(){
         orders = new List<Order>();
         orderSlots = new bool[maxNumOrders];
@@ -56,16 +68,58 @@ public class OrderManager : MonoBehaviour {
         GameObject g = Instantiate(prefabOrder, orderOrigin.transform.position + orderOffset * orderIndex, Quaternion.identity) as GameObject;
         Order o = g.GetComponent<Order>();
 
-        int[] ingredients = new int[Random.Range(1,4) + (difficulty - 1) * 3];
+        int[] ingredientCount = new int[numIngredients];
 
-        for(int i = 0; i < ingredients.Length; i++){
-            ingredients[i] = Random.Range(1, numIngredients + 1);
+        for(int i = 0; i < ingredientCount.Length; i++){
+            ingredientCount[i] = Random.Range(0, 4);
         }
 
-        o.set(Random.Range(0,numTables), ingredients);
+        o.set(Random.Range(0, numTables), ingredientCount);
         o.slot = orderIndex;
         o.id = orderCount++;
 
         orders.Add(o);
     }
+
+    public void delivered(Pizza pizza){
+        int[] ingredientCount = new int[numIngredients];
+        Debug.Log(pizza);
+
+        for(int i = 0; i < pizza.ingredients.Count; i++){
+            ingredientCount[pizza.ingredients[i].type]++;
+        }
+
+        bool found = false;
+        for(int i = 0; i < orders.Count; i++){
+            bool b = true;
+            for(int j = 0; j < orders[i].ingredientCount.Length; j++){
+                if(ingredientCount[j] != orders[i].ingredientCount[j]){
+                    b = false;
+                    break;
+                }
+
+            }
+            if(!b)
+                continue;
+
+            found = true;
+            //correct order!?
+            Debug.Log(ingredientCount);
+            Debug.Log(orders[i].ingredientCount);
+            
+            ScoreManager.getInstance().score++;
+
+
+        }
+        if(!found){
+            Debug.Log("WRONG!?");
+
+        }
+
+
+
+
+    }
+
+
 }

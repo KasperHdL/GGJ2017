@@ -7,13 +7,13 @@ public class Table : MonoBehaviour {
     public float minPizzaTime = 2f;
     public OrderManager orderManager;
 
-    private List<GameObject> activePizzas;
+    private List<Pizza> activePizzas;
     private List<float> acceptedTime;
 
 	void Start () {
         orderManager = GameObject.Find("Systems").GetComponent<OrderManager>();
 
-        activePizzas = new List<GameObject>();
+        activePizzas = new List<Pizza>();
         acceptedTime = new List<float>();
 		
 	}
@@ -24,10 +24,12 @@ public class Table : MonoBehaviour {
             if(Time.time >= acceptedTime[i]){
                 //TODO GIVE POINT REMOVE PIZZA N STUFF
 
-                ScoreManager.getInstance().score++;
+                acceptedTime.RemoveAt(i);
+
+                orderManager.delivered(activePizzas[i]);
+
                 Destroy(activePizzas[i]);
                 activePizzas.RemoveAt(i);
-                acceptedTime.RemoveAt(i);
 
             }
         }
@@ -35,19 +37,23 @@ public class Table : MonoBehaviour {
 
     void OnCollisionEnter(Collision coll){
         if(coll.gameObject.tag == "Pizza"){
+            Pizza p = coll.gameObject.GetComponent<Pizza>();
+
             for(int i = 0;i < activePizzas.Count; i++){
-                if(coll.gameObject == activePizzas[i])
+                if(p == activePizzas[i])
                     return;
             }
-            activePizzas.Add(coll.gameObject);
+            activePizzas.Add(p);
             acceptedTime.Add(Time.time + minPizzaTime);
         }
     }
 
     void OnCollisionExit(Collision coll){
         if(coll.gameObject.tag == "Pizza"){
+            Pizza p = coll.gameObject.GetComponent<Pizza>();
+
             for(int i = 0;i < activePizzas.Count; i++){
-                if(coll.gameObject == activePizzas[i]){
+                if(p == activePizzas[i]){
                     activePizzas.RemoveAt(i);
                     acceptedTime.RemoveAt(i);
                 }

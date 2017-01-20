@@ -8,6 +8,7 @@ public class Pizza : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        ingredients = new List<Ingredient>();
 		
 	}
 	
@@ -16,9 +17,16 @@ public class Pizza : MonoBehaviour {
 		
 	}
 
-
     void OnCollisionEnter(Collision coll){
         if(coll.gameObject.tag == "Ingredient"){
+            for(int i = 0; i < ingredients.Count; i++){
+                if(ingredients[i] == coll.gameObject.GetComponent<Ingredient>()){
+                    return;
+                }
+            }
+
+            ingredients.Add(coll.gameObject.GetComponent<Ingredient>());
+
             coll.transform.SetParent(transform, true);
             coll.transform.localScale = Vector3.one;
             coll.transform.position = coll.contacts[0].point;
