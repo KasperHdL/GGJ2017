@@ -34,8 +34,8 @@ public class Floor : MonoBehaviour {
                 acceptedTime.RemoveAt(i);
 
 
-                Instantiate(prefabWrongParticleSystem, activePizzas[i].transform.position, Quaternion.identity);
                 
+                Instantiate(prefabWrongParticleSystem, activePizzas[i].transform.position, prefabWrongParticleSystem.transform.rotation);
 
                 Destroy(activePizzas[i].gameObject);
                 activePizzas.RemoveAt(i);
@@ -48,7 +48,7 @@ public class Floor : MonoBehaviour {
             if(Time.time >= destroyIngredientTime[i]){
                 destroyIngredientTime.RemoveAt(i);
 
-                Instantiate(prefabWrongParticleSystem, activePizzas[i].transform.position, Quaternion.identity);
+                Instantiate(prefabWrongParticleSystem, activePizzas[i].transform.position, prefabWrongParticleSystem.transform.rotation);
                 Destroy(activeIngredients[i].gameObject);
                 activeIngredients.RemoveAt(i);
 

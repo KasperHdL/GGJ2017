@@ -8,6 +8,7 @@ public class Pizza : MonoBehaviour {
     public Transform ingredientContainer;
     public int[] ingredientCount;
 	public bool cooked = false;
+    public Renderer renderer;
 
 	public List<GameObject> dummyIngredients;
 	// Use this for initialization
@@ -26,10 +27,10 @@ public class Pizza : MonoBehaviour {
 		cooked = true;
 		foreach (GameObject child in dummyIngredients) {
             Ingredient i = child.GetComponent<Ingredient>();
-            child.GetComponent<Renderer>().material = i.model.cookedMaterial;
+            i.renderer.material = i.model.cookedMaterial;
 		}
 
-        GetComponent<Renderer>().material = model.cookedMaterial;
+        renderer.material = model.cookedMaterial;
 	}
 
     void OnCollisionEnter(Collision coll){

@@ -60,7 +60,7 @@ public class Table : MonoBehaviour {
                 if(correct){
                     Instantiate(prefabCorrectParticleSystem, activePizzas[i].transform.position, Quaternion.identity);
                 }else{
-                    Instantiate(prefabWrongParticleSystem, activePizzas[i].transform.position, Quaternion.identity);
+                    Instantiate(prefabWrongParticleSystem, activePizzas[i].transform.position, prefabWrongParticleSystem.transform.rotation);
                 }
                 
 

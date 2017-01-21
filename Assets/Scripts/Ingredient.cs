@@ -11,4 +11,5 @@ public class Ingredient : MonoBehaviour {
 
     public Type type;
     public ModelIngredient model;
+    public Renderer renderer;
 }

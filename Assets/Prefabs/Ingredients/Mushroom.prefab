@@ -214,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   model: {fileID: 11400000, guid: 604225d06d5de4c05aa88019a4a9df1c, type: 2}
+  renderer: {fileID: 23214282670410574}
 --- !u!114 &114766879490306178
 MonoBehaviour:
   m_ObjectHideFlags: 1
