@@ -7,10 +7,13 @@ public class Pizza : MonoBehaviour {
     public ModelPizza model;
     public Transform ingredientContainer;
     public int[] ingredientCount;
+	public bool cooked = false;
 
+	public List<GameObject> dummyIngredients;
 	// Use this for initialization
 	void Start () {
         ingredientCount = new int[model.ingredientTypes.Length];
+		dummyIngredients = new List<GameObject> ();
 		
 	}
 	
@@ -19,19 +22,30 @@ public class Pizza : MonoBehaviour {
 		
 	}
 
+	public void cook(){
+		cooked = true;
+		foreach (GameObject child in dummyIngredients) {
+            Ingredient i = child.GetComponent<Ingredient>();
+            child.GetComponent<Renderer>().material = i.model.cookedMaterial;
+		}
+
+        GetComponent<Renderer>().material = model.cookedMaterial;
+	}
+
     void OnCollisionEnter(Collision coll){
         if (coll.gameObject.tag == "Ingredient"){
-            Ingredient.Type type = coll.gameObject.GetComponent<Ingredient>().type;
+            Ingredient ingredient = coll.gameObject.GetComponent<Ingredient>();
 
             int i = 0;
             for(;i < model.ingredientTypes.Length; i++){
-                if(model.ingredientTypes[i] == type)
+                if(model.ingredientTypes[i] == ingredient.type)
                     break;
             }
 
             Transform t = coll.transform;
 
             GameObject g = Instantiate(model.prefabIngredients[i], t.position, t.rotation);
+			dummyIngredients.Add (g);
 
             g.transform.SetParent(ingredientContainer, true);
             ingredientCount[i]++;

@@ -238,6 +238,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &613715023 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1741111845204102, guid: e47d91a540eb29f4986f71471f89e6c5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1907880795}
+--- !u!114 &613715024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 613715023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9726d0d7bbf6fd4185f6c9490b0816c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closed: 0
 --- !u!1 &1562113743
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,13 +318,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &1624666953
+--- !u!1001 &1907880795
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 23878632785629202, guid: e47d91a540eb29f4986f71471f89e6c5,
+        type: 2}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403980922413762, guid: e47d91a540eb29f4986f71471f89e6c5,
+        type: 2}
+      propertyPath: onMaxAngle.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4691605422868706, guid: e47d91a540eb29f4986f71471f89e6c5, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -339,6 +366,55 @@ Prefab:
     - target: {fileID: 4691605422868706, guid: e47d91a540eb29f4986f71471f89e6c5, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403980922413762, guid: e47d91a540eb29f4986f71471f89e6c5,
+        type: 2}
+      propertyPath: onMaxAngle.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403980922413762, guid: e47d91a540eb29f4986f71471f89e6c5,
+        type: 2}
+      propertyPath: onMaxAngle.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403980922413762, guid: e47d91a540eb29f4986f71471f89e6c5,
+        type: 2}
+      propertyPath: onMaxAngle.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 613715024}
+    - target: {fileID: 114403980922413762, guid: e47d91a540eb29f4986f71471f89e6c5,
+        type: 2}
+      propertyPath: onMaxAngle.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: isClosed
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403980922413762, guid: e47d91a540eb29f4986f71471f89e6c5,
+        type: 2}
+      propertyPath: onMaxAngle.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403980922413762, guid: e47d91a540eb29f4986f71471f89e6c5,
+        type: 2}
+      propertyPath: onMaxAngle.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23878632785629202, guid: e47d91a540eb29f4986f71471f89e6c5,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2febc94526e802845819f2edb37cc77d, type: 2}
+    - target: {fileID: 23878632785629202, guid: e47d91a540eb29f4986f71471f89e6c5,
+        type: 2}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: a6fbe73dcfb1a2a4eb5356cff36c3af1, type: 2}
+    - target: {fileID: 33459465624444940, guid: e47d91a540eb29f4986f71471f89e6c5,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4105991094286470, guid: e47d91a540eb29f4986f71471f89e6c5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.5784
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e47d91a540eb29f4986f71471f89e6c5, type: 2}

@@ -89,7 +89,7 @@ public class OrderManager : MonoBehaviour {
         orders.Add(o);
     }
 
-    public void delivered(Pizza pizza){
+    public bool delivered(Pizza pizza){
 
         bool found = false;
         int i = 0;
@@ -112,9 +112,10 @@ public class OrderManager : MonoBehaviour {
         if(found){
             scoreManager.score++;
         }else{
-            Debug.Log("NOT FOUND");
 
         }
+
+        return found;
 
     }
 
