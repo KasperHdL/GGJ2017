@@ -22,6 +22,7 @@ public class Oven : MonoBehaviour {
 	void OnTriggerStay(Collider other) {
 		if (closed) {
 			if (other.tag.Equals ("Pizza")) {
+				Debug.Log ("Cooked!");
 				other.GetComponent<Pizza> ().cook ();
 			}
 		}
