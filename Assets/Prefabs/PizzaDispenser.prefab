@@ -635,14 +635,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dispenseSounds:
-  - {fileID: 8300000, guid: aa6b7380776bc9d4eb0701c948c0d933, type: 3}
-  - {fileID: 8300000, guid: b8cd6ed24082f1340a4507edeef6ce2a, type: 3}
-  - {fileID: 8300000, guid: cc3274eed73710b42b60f5bc307a1d24, type: 3}
-  - {fileID: 8300000, guid: 06a88b5d275d74845a300bd345c99e3c, type: 3}
-  - {fileID: 8300000, guid: 2f49bd4f32050714281f7360b5f5ce1a, type: 3}
-  - {fileID: 8300000, guid: 0c8da90c872a7a0419029c0145931acb, type: 3}
-  - {fileID: 8300000, guid: 46f7e11c319c1dc4db0df0be4c03eb24, type: 3}
-  - {fileID: 8300000, guid: 9f1657e08dc7aeb49beb642ed5cefd7c, type: 3}
+  - {fileID: 8300000, guid: 3791476b97651f243b5b1ec7bda084cd, type: 3}
+  - {fileID: 8300000, guid: 422d28a6a8ef0a04b9163f81996facc7, type: 3}
+  - {fileID: 8300000, guid: 5b829e4a603aeef49a41778b350aa833, type: 3}
+  - {fileID: 8300000, guid: 352f51a0f733d8346a43d43153de6a02, type: 3}
+  - {fileID: 8300000, guid: d1947b3bdff9e474cb6c09ccd4cd4bfa, type: 3}
+  - {fileID: 8300000, guid: 037397c4ec579ea4fa1ffe91d5fb0bae, type: 3}
+  - {fileID: 8300000, guid: 5a279b2776680df44a0b13cccf40f7ae, type: 3}
+  - {fileID: 8300000, guid: e4fbe40ca725bb74a920a67663f5d83d, type: 3}
   dispensePoint: {fileID: 4759844064325890}
   resetPoint: {fileID: 4795211435739498}
   pizzaSlot: {fileID: 4799823026851152}

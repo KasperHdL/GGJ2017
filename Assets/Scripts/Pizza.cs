@@ -101,7 +101,7 @@ public class Pizza : MonoBehaviour {
 			ingredientCount [i]++;
 			ingredient.renderer.enabled = false;
 
-		} else if (cooked&&coll.gameObject.name=="Floor") {
+		} else if (cooked&&coll.gameObject.tag=="Floor") {
 			if (missSounds.Length > 0) {
 				int index = Random.Range (0, missSounds.Length);
 				audioSrc.clip = missSounds [index];
