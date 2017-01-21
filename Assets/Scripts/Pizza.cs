@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pizza : MonoBehaviour {
 
+    public Transform ingredientContainer;
     public List<Ingredient> ingredients;
 
 	// Use this for initialization
@@ -28,10 +29,13 @@ public class Pizza : MonoBehaviour {
 
             ingredients.Add(coll.gameObject.GetComponent<Ingredient>());
 
-            coll.transform.localScale = Vector3.one;
+            Rigidbody body = coll.transform.GetComponent<Rigidbody>();
+            body.isKinematic = true;
+
+
+            coll.transform.SetParent(ingredientContainer, true);
             coll.transform.position = coll.contacts[0].point;
-            coll.transform.parent.GetComponent<Rigidbody>().isKinematic = true;
-            coll.transform.SetParent(transform, true);
+            coll.collider.enabled = false;
 
         }
 
