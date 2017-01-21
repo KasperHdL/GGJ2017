@@ -791,7 +791,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.5682805
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -897,6 +897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disable: 0
 --- !u!114 &114156551459237200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -908,6 +909,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f32883eed859804dbb0c5fedac91496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonReleased: 1
+  oven: {fileID: 0}
+  snapZone: 5
+  gravity: 0
+  currentlyClosed: 0
   axisOfRotation: 1
   childCollider: {fileID: 0}
   linearMapping: {fileID: 0}
@@ -962,6 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9726d0d7bbf6fd4185f6c9490b0816c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _doorClosed: 0
   pizzasInOven: []
   bakeSounds: []
 --- !u!136 &136763720482035158

@@ -29,8 +29,8 @@ public class Oven : MonoBehaviour {
     }
 	public void doorClosed(){
 		//play sounds of the pizza being baked
-		int index = Random.Range (0, bakeSounds.Length + 1);
-		if (bakeSounds [index] != null) {
+		if (bakeSounds.Length > 0) {
+			int index = Random.Range (0, bakeSounds.Length + 1);
 			audioSrc.clip = bakeSounds [index];
 			if (!audioSrc.isPlaying) {
 				audioSrc.Play ();
