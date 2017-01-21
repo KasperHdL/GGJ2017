@@ -65,8 +65,6 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void OnHandHoverBegin( Hand hand )
 		{
-			bool showHint = false;
-
 			// "Catch" the throwable by holding down the interaction button instead of pressing it.
 			// Only do this if the throwable is moving faster than the prescribed threshold speed,
 			// and if it isn't attached to another hand
@@ -78,24 +76,10 @@ namespace Valve.VR.InteractionSystem
 					if ( rb.velocity.magnitude >= catchSpeedThreshold )
 					{
 						hand.AttachObject( gameObject, attachmentFlags, attachmentPoint );
-						showHint = false;
 					}
 				}
 			}
-
-			if ( showHint )
-			{
-				ControllerButtonHints.ShowButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
-			}
 		}
-
-
-		//-------------------------------------------------
-		private void OnHandHoverEnd( Hand hand )
-		{
-			ControllerButtonHints.HideButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
-		}
-
 
 		//-------------------------------------------------
 		private void HandHoverUpdate( Hand hand )
@@ -104,7 +88,6 @@ namespace Valve.VR.InteractionSystem
 			if ( hand.GetStandardInteractionButtonDown() )
 			{
 				hand.AttachObject( gameObject, attachmentFlags, attachmentPoint );
-				ControllerButtonHints.HideButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
 			}
 		}
 
