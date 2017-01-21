@@ -185,7 +185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minPizzaTime: 2
-  orderManager: {fileID: 0}
 --- !u!1001 &34010589
 Prefab:
   m_ObjectHideFlags: 0
@@ -377,6 +376,11 @@ Prefab:
       propertyPath: orderOrigin
       value: 
       objectReference: {fileID: 1196690143}
+    - target: {fileID: 114620582997581754, guid: ad191240abbcf4fd7bfd1e024447afd3,
+        type: 2}
+      propertyPath: maxNumOrders
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad191240abbcf4fd7bfd1e024447afd3, type: 2}
   m_IsPrefabParent: 0
