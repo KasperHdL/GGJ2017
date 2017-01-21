@@ -10,14 +10,5 @@ public class Ingredient : MonoBehaviour {
     }
 
     public Type type;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public ModelIngredient model;
 }
