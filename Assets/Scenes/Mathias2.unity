@@ -198,6 +198,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1834116423961330, guid: 1cb0e9f80afedd944af1155cba053124, type: 2}
+      propertyPath: m_TagString
+      value: GameController
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233085763895372, guid: 1cb0e9f80afedd944af1155cba053124, type: 2}
+      propertyPath: m_TagString
+      value: GameController
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1cb0e9f80afedd944af1155cba053124, type: 2}
   m_IsPrefabParent: 0
@@ -239,18 +247,6 @@ Prefab:
     - target: {fileID: 4504355852138028, guid: 0b301fc8be24eea4ca002570bbf819ce, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4504355852138028, guid: 0b301fc8be24eea4ca002570bbf819ce, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.6984201
-      objectReference: {fileID: 0}
-    - target: {fileID: 4504355852138028, guid: 0b301fc8be24eea4ca002570bbf819ce, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.29839256
-      objectReference: {fileID: 0}
-    - target: {fileID: 4504355852138028, guid: 0b301fc8be24eea4ca002570bbf819ce, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.5986643
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b301fc8be24eea4ca002570bbf819ce, type: 2}
@@ -395,6 +391,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &172363880 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1950931079512912, guid: 0b301fc8be24eea4ca002570bbf819ce,
+    type: 2}
+  m_PrefabInternal: {fileID: 380969573}
+--- !u!114 &172363881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 172363880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac64d0b34866f514996eba081a29587b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
 --- !u!1001 &222327450
 Prefab:
   m_ObjectHideFlags: 0
@@ -431,6 +444,10 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4826813658668200, guid: 237af58340566084ebc41c2983aa6e7b, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512096243424344, guid: 237af58340566084ebc41c2983aa6e7b, type: 2}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
@@ -817,7 +834,7 @@ HingeJoint:
   m_Anchor: {x: -0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.0000002, y: 1.505, z: -0.3}
+  m_ConnectedAnchor: {x: 1.0000002, y: 1.505, z: -0.53000003}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1026,7 +1043,7 @@ HingeJoint:
   m_Anchor: {x: -0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -1.0000002, y: 1.505, z: -0.3}
+  m_ConnectedAnchor: {x: -1.0000002, y: 1.505, z: -0.53000003}
   m_UseSpring: 0
   m_Spring:
     spring: 0
