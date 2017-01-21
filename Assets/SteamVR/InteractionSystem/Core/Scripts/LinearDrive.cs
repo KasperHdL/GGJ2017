@@ -40,7 +40,6 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		void Start()
 		{
-            rb = GetComponent<Rigidbody>();
 
 			if ( linearMapping == null )
 			{

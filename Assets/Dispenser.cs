@@ -8,7 +8,8 @@ public class Dispenser : MonoBehaviour {
     public Transform dispensePoint;
     public Transform resetPoint;
     public Transform pizzaSlot;
-
+    public Transform dispenseDirection;
+    public float dispenseSpeed;
     public GameObject pizzaPrefab;
 
 
@@ -17,6 +18,10 @@ public class Dispenser : MonoBehaviour {
 		if (transform.position.y < dispensePoint.position.y && !dispensed)
         {
             GameObject pizza = Instantiate(pizzaPrefab, pizzaSlot.position, Quaternion.identity);
+            Rigidbody rb = pizza.GetComponent<Rigidbody>();
+
+            Vector3 direction = dispenseDirection.position - pizzaSlot.position;
+            rb.AddForce(direction * dispenseSpeed, ForceMode.Impulse);
             dispensed = true;
         }
         if (transform.position.y > resetPoint.position.y)
