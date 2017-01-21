@@ -33,7 +33,7 @@ public class Dispenser : MonoBehaviour {
 
 			//Play the sound of the pizza getting despensed!
 			if (dispenseSounds.Length > 0) {
-				int index = Random.Range (0, dispenseSounds.Length + 1);
+				int index = Random.Range (0, dispenseSounds.Length);
 				audioSrc.clip = dispenseSounds [index];
 				if (!audioSrc.isPlaying) {
 					audioSrc.Play ();

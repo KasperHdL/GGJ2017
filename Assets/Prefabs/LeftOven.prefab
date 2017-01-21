@@ -971,12 +971,12 @@ MonoBehaviour:
   _doorClosed: 0
   pizzasInOven: []
   bakeSounds:
-  - {fileID: 8300000, guid: 299725f86ce94504894835282955721b, type: 3}
-  - {fileID: 8300000, guid: 2444ff33d0a255048979e9933ecdf729, type: 3}
-  - {fileID: 8300000, guid: ff97c0f0ba4a959429b8e0364731c47a, type: 3}
-  - {fileID: 8300000, guid: 44732ac7ce61f3b4dabe0df678fe9b71, type: 3}
-  - {fileID: 8300000, guid: 5c2ee6c32b4da5147ae1e3598a64e8cc, type: 3}
-  - {fileID: 8300000, guid: 3d3cb887c7193fc4d9b034cfe42ffb77, type: 3}
+  - {fileID: 8300000, guid: 8d041dec98f98284e9435fe13bc9bcee, type: 3}
+  - {fileID: 8300000, guid: becbc8de8b8d6814fb0102b0613bf676, type: 3}
+  - {fileID: 8300000, guid: 9670a19ab29b7dd4d85a7046ab5df8dd, type: 3}
+  - {fileID: 8300000, guid: a1076bc89bdea51409929e2160b65295, type: 3}
+  - {fileID: 8300000, guid: 0f4455713ff14f54a9f7d06e2cd482bf, type: 3}
+  - {fileID: 8300000, guid: c2aaa43e9e97bcf41ab6bc8f8e9ca12f, type: 3}
 --- !u!136 &136763720482035158
 CapsuleCollider:
   m_ObjectHideFlags: 1
