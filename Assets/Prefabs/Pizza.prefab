@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114061487399964118}
   - component: {fileID: 64622978228872358}
   - component: {fileID: 114121815737472314}
+  - component: {fileID: 82001909374859286}
   m_Layer: 9
   m_Name: Pizza
   m_TagString: Pizza
@@ -172,6 +173,86 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a6e66a372555e410a816422a9b3e86ca, type: 3}
+--- !u!82 &82001909374859286
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1584180543620788}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114061487399964118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,6 +300,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   snapAttachEaseInCompleted: 0
+  interactable: {fileID: 0}
 --- !u!114 &114121815737472314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,6 +312,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92a76d6ae9574a44b7070ebe5ae37df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missSounds:
+  - {fileID: 8300000, guid: 9b1ff9663f723a3499f1aa3e0dae9bcd, type: 3}
+  - {fileID: 8300000, guid: ac4930168906ae749b67cd25ed3fefb7, type: 3}
+  - {fileID: 8300000, guid: ab7f2cc5f77986b479cd44b492059458, type: 3}
+  - {fileID: 8300000, guid: 1f2e32fdd9917984c9997f8fe255c0ab, type: 3}
+  - {fileID: 8300000, guid: bb1c1ed9e0e5b9540ba621b8d17c217d, type: 3}
+  - {fileID: 8300000, guid: 94a0ad899d8c6aa4d91a6f265f014920, type: 3}
+  - {fileID: 8300000, guid: 252757074fbdbcc42977786e478102f6, type: 3}
+  - {fileID: 8300000, guid: 554a896996fc85e4e8880ed5d6bb0b64, type: 3}
+  - {fileID: 8300000, guid: 3e7b361b0f514744e9b98beb3c12dc53, type: 3}
+  - {fileID: 8300000, guid: 919136be0d150d24ebd1400048396a20, type: 3}
   model: {fileID: 11400000, guid: 23ac3f5dba3b54ab88be44c49ed9ee11, type: 2}
   ingredientContainer: {fileID: 4884851433746244}
   ingredientCount: 
