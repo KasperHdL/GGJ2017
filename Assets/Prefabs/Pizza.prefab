@@ -291,7 +291,18 @@ MonoBehaviour:
   attachEaseInAttachmentNames: []
   onPickUp:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114121815737472314}
+        m_MethodName: pickedUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onDetachFromHand:
@@ -332,6 +343,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: be416ba351111b0428b0bf18da30cf9d, type: 3}
   - {fileID: 8300000, guid: 4fb6795682a64064a9cc73be764f3735, type: 3}
   - {fileID: 8300000, guid: 619b11972e625f648b09042f01b68dea, type: 3}
+  pizzaPickupSounds:
+  - {fileID: 8300000, guid: dd4e83a5c050d704fa9b350e45cab1de, type: 3}
+  - {fileID: 8300000, guid: c87735cf301993540b092b3804881c9b, type: 3}
+  - {fileID: 8300000, guid: 7f578659b2c8ee143b34eb81c77f38a9, type: 3}
+  - {fileID: 8300000, guid: 26b4c5e2cda21ef4384e2f5090a6823a, type: 3}
+  - {fileID: 8300000, guid: dff7186a81763584d84a565662f53ca0, type: 3}
+  - {fileID: 8300000, guid: c8ad9b0bf6775524db6e25cce35a1130, type: 3}
   model: {fileID: 11400000, guid: 23ac3f5dba3b54ab88be44c49ed9ee11, type: 2}
   ingredientContainer: {fileID: 4884851433746244}
   ingredientCount: 
