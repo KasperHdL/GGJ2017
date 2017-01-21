@@ -60,17 +60,17 @@ public class Pizza : MonoBehaviour {
     void OnCollisionEnter(Collision coll){
         if (cooked) return;
 
-		if (coll.gameObject.tag == "Ingredient") {
-			if (ingrdientSounds.Length > 0) {
+        if (coll.gameObject.tag == "Ingredient")
+        {
+            if (ingrdientSounds.Length > 0) {
 				int index = Random.Range (0, ingrdientSounds.Length);
 				audioSrc.clip = ingrdientSounds [index];
 				if (!audioSrc.isPlaying) {
 					audioSrc.Play ();
 				}
 			}
+
 			Ingredient ingredient = coll.gameObject.GetComponent<Ingredient> ();
-			if (ingredient.renderer.enabled == false)
-				return;
 
 			int i = 0;
 			for (; i < model.ingredientTypes.Length; i++) {

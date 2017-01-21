@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114176510598682444}
   - component: {fileID: 64829804006509570}
   - component: {fileID: 114221753265792216}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Salami
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4427139461060318}
   - component: {fileID: 33435985104988572}
   - component: {fileID: 23379229822083698}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,6 +204,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   snapAttachEaseInCompleted: 0
+  interactable: {fileID: 0}
 --- !u!114 &114221753265792216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -218,6 +219,8 @@ MonoBehaviour:
   type: 2
   model: {fileID: 11400000, guid: 886067c13ea304f4cacf57cbb080e37e, type: 2}
   renderer: {fileID: 23379229822083698}
+  dispenser: {fileID: 0}
+  dispenserIndex: 0
 --- !u!114 &114339720324210628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,3 +232,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disable: 0

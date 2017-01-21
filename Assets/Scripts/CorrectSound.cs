@@ -12,7 +12,7 @@ public class CorrectSound : MonoBehaviour {
 		audioSrc = GetComponent<AudioSource> ();
 		//Play the sound of the pizza getting despensed!
 		if (correctSounds.Length > 0) {
-			int index = Random.Range (0, correctSounds.Length + 1);
+			int index = Random.Range (0, correctSounds.Length);
 			audioSrc.clip = correctSounds [index];
 			if (!audioSrc.isPlaying) {
 				audioSrc.Play ();

@@ -42,6 +42,7 @@ public class Ingredient : MonoBehaviour
     {
         if (coll.gameObject.tag == "Pizza")
         {
+            Debug.Log("H");
             if (coll.gameObject.GetComponent<Pizza>().cooked) return;
             if (hand != null) hand.DetachObject(gameObject);
             //Destroy(gameObject, 0.5f);
