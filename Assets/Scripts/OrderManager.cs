@@ -54,6 +54,16 @@ public class OrderManager : MonoBehaviour {
             newOrder(3);
     }
 
+    public void clear(){
+        for(int i = orders.Count - 1;i > -1 ; i--){
+            Destroy(orders[i].gameObject);
+            orders.RemoveAt(i);
+            orderSlots[i] = false;
+            orderCount = 0;
+        }
+
+    }
+
     //difficulty is how many rows will be generated
     public void newOrder(int difficulty){
         if(difficulty <= 0 || difficulty >= 4){
