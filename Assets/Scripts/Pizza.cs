@@ -11,6 +11,8 @@ public class Pizza : MonoBehaviour {
 	public AudioClip[] ingrdientSounds;
 	//Remember to put ind sounds if you need them
 	public AudioClip[] pizzaPickupSounds;
+	//Remember to put ind sounds if you need them
+	public AudioClip[] throwSounds;
 
     public ModelPizza model;
     public Transform ingredientContainer;
@@ -50,6 +52,17 @@ public class Pizza : MonoBehaviour {
 		if (pizzaPickupSounds.Length > 0) {
 			int index = Random.Range (0, pizzaPickupSounds.Length + 1);
 			audioSrc.clip = pizzaPickupSounds [index];
+			if (!audioSrc.isPlaying) {
+				audioSrc.Play ();
+			}
+		}
+	}
+
+	public void thrown(){
+		Debug.Log (this.transform.GetComponent<Rigidbody> ().velocity);
+		if (throwSounds.Length > 0) {
+			int index = Random.Range (0, throwSounds.Length);
+			audioSrc.clip = throwSounds [index];
 			if (!audioSrc.isPlaying) {
 				audioSrc.Play ();
 			}

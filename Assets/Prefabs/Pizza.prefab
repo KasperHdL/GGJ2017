@@ -350,6 +350,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 26b4c5e2cda21ef4384e2f5090a6823a, type: 3}
   - {fileID: 8300000, guid: dff7186a81763584d84a565662f53ca0, type: 3}
   - {fileID: 8300000, guid: c8ad9b0bf6775524db6e25cce35a1130, type: 3}
+  throwSounds:
+  - {fileID: 8300000, guid: 615bd0c2f677293449711e1fe0682a00, type: 3}
+  - {fileID: 8300000, guid: 86260db16b296fd4e871982acf5c12c0, type: 3}
+  - {fileID: 8300000, guid: 2a8715d2b73ccd74b897d48257fcdd47, type: 3}
+  - {fileID: 8300000, guid: 7afb920001527dc46aff07a396ca8ca4, type: 3}
+  - {fileID: 8300000, guid: baf09792240116b4d8a42dc0a7aaf4d9, type: 3}
+  - {fileID: 8300000, guid: a6784f4df72d5994bbd5ddc9c238806e, type: 3}
+  - {fileID: 8300000, guid: ab178dcf5d2251f4e92957dfa83a7789, type: 3}
+  - {fileID: 8300000, guid: 501159e6335b8744a974be37d8d99f59, type: 3}
   model: {fileID: 11400000, guid: 23ac3f5dba3b54ab88be44c49ed9ee11, type: 2}
   ingredientContainer: {fileID: 4884851433746244}
   ingredientCount: 
