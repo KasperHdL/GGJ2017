@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Table : MonoBehaviour {
 
-    public GameObject prefabParticleSystem;
+    public GameObject prefabCorrectParticleSystem;
+    public GameObject prefabWrongParticleSystem;
 
     public float minPizzaTime = 2f;
     private OrderManager orderManager;
@@ -42,10 +43,14 @@ public class Table : MonoBehaviour {
 
                 acceptedTime.RemoveAt(i);
 
-                GameObject g = Instantiate(prefabParticleSystem, activePizzas[i].transform.position, Quaternion.identity) as GameObject;
 
-
-                orderManager.delivered(activePizzas[i]);
+                bool correct = orderManager.delivered(activePizzas[i]);
+                if(correct){
+                    Instantiate(prefabCorrectParticleSystem, activePizzas[i].transform.position, Quaternion.identity);
+                }else{
+                    Instantiate(prefabWrongParticleSystem, activePizzas[i].transform.position, Quaternion.identity);
+                }
+                
 
                 Destroy(activePizzas[i].gameObject);
                 activePizzas.RemoveAt(i);
