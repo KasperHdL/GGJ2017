@@ -22,7 +22,10 @@ public class Table : MonoBehaviour {
         activePizzas = new List<Pizza>();
         acceptedTime = new List<float>();
 
-        Vector3 scale = transform.localScale / 2;
+        Vector3 scale = transform.parent.localScale / 2;
+
+        transform.localScale = transform.parent.localScale;
+        transform.parent.localScale = Vector3.one;
 
         float x = scale.x * legOffset;
         float y = -0.5f;
