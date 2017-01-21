@@ -36,7 +36,7 @@ public class Oven : MonoBehaviour {
 				audioSrc.Play ();
 			}
 		}
-		foreach (GameObject pizza in pizzasInOven) {
+		foreach (Pizza pizza in pizzasInOven) {
 			pizza.GetComponent<Pizza> ().cook ();
 		}
         _doorClosed = true;
