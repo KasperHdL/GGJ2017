@@ -8,4 +8,5 @@ public class ModelPizza : ScriptableObject {
     public Ingredient.Type[] ingredientTypes;
     [Header("Changes DO apply")]
     public GameObject[] prefabIngredients;
+    public Material cookedMaterial;
 }

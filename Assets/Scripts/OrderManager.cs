@@ -21,6 +21,7 @@ public class OrderManager : MonoBehaviour {
     public int orderCount = 0;
 
 
+    private ScoreManager scoreManager;
     private static OrderManager instance;
 
     public void Awake(){
@@ -36,6 +37,7 @@ public class OrderManager : MonoBehaviour {
     public void Start(){
         orders = new List<Order>();
         orderSlots = new bool[maxNumOrders];
+        scoreManager = ScoreManager.getInstance();
 
         modelOrder.ingredientTypes = ingredientTypes;
         modelPizza.ingredientTypes = ingredientTypes;
@@ -87,35 +89,33 @@ public class OrderManager : MonoBehaviour {
         orders.Add(o);
     }
 
-    public void delivered(Pizza pizza){
+    public bool delivered(Pizza pizza){
 
         bool found = false;
         int i = 0;
         for(; i < orders.Count; i++){
-            bool b = true;
+            bool correctIngredients = true;
             for(int j = 0; j < orders[i].ingredientCount.Length; j++){
                 if(pizza.ingredientCount[j] != orders[i].ingredientCount[j]){
-                    b = false;
+                    correctIngredients = false;
                     break;
                 }
 
             }
-            if(!b)
+            if(!correctIngredients)
                 continue;
 
             found = true;
-            //correct order!?
-            Debug.Log(pizza.ingredientCount);
-            Debug.Log(orders[i].ingredientCount);
-            
-            ScoreManager.getInstance().score++;
+            break;
+        }
+
+        if(found){
+            scoreManager.score++;
+        }else{
 
         }
 
-        if(!found){
-            Debug.Log("NOT FOUND");
-
-        }
+        return found;
 
     }
 

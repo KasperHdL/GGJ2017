@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  model: {fileID: 11400000, guid: 886067c13ea304f4cacf57cbb080e37e, type: 2}
 --- !u!114 &114769623274610090
 MonoBehaviour:
   m_ObjectHideFlags: 1
