@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4700904213135844}
   - component: {fileID: 33910105596142254}
   - component: {fileID: 23296237970559378}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Pizza
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114061487399964118}
   - component: {fileID: 64622978228872358}
   - component: {fileID: 114121815737472314}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pizza
   m_TagString: Pizza
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4884851433746244}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ingredients
   m_TagString: Untagged
   m_Icon: {fileID: 0}

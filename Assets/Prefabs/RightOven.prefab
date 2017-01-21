@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 136507572129165308}
   - component: {fileID: 114174450572229994}
   - component: {fileID: 114551775461176302}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,6 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4445932708772656}
   - component: {fileID: 65997822754542992}
+  - component: {fileID: 114010653992269226}
   m_Layer: 0
   m_Name: RightOven
   m_TagString: Untagged
@@ -806,6 +807,18 @@ Light:
   m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114010653992269226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650427617921568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9726d0d7bbf6fd4185f6c9490b0816c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pizzasInOven: []
 --- !u!114 &114174450572229994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -850,7 +863,18 @@ MonoBehaviour:
   freezeOnMax: 0
   onMaxAngle:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114010653992269226}
+        m_MethodName: doorClosed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   forceStart: 0
