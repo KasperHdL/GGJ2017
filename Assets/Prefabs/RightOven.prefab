@@ -819,6 +819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pizzasInOven: []
+  bakeSounds: []
 --- !u!114 &114174450572229994
 MonoBehaviour:
   m_ObjectHideFlags: 1
