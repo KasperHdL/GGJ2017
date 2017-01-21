@@ -24,6 +24,8 @@ public class Pizza : MonoBehaviour {
 
 	public void cook(){
 		cooked = true;
+		Material pizzaCooked = (Material)Resources.Load ("pizzaTex", typeof(Material));
+		gameObject.GetComponent<Renderer> ().material = pizzaCooked;
 		foreach (GameObject thing in dummyIngredients) {
 			switch (thing.GetComponent<Ingredient> ().type) {
 
