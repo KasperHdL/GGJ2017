@@ -93,3 +93,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   model: {fileID: 11400000, guid: 45b22f0535a0e41808776d5f355d9fcd, type: 2}
+  renderer: {fileID: 23634003029173802}
