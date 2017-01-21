@@ -179,6 +179,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4445932708772656}
+  - component: {fileID: 65997822754542992}
   m_Layer: 0
   m_Name: RightOven
   m_TagString: Untagged
@@ -759,6 +760,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65997822754542992
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650427617921568}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.93361557, y: 0.5936837, z: 1.6181643}
+  m_Center: {x: -0.033192396, y: 0.2559471, z: 0.28488255}
 --- !u!108 &108558220650585088
 Light:
   m_ObjectHideFlags: 1

@@ -37,6 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4009182558356212}
+  - component: {fileID: 65418557354202390}
   m_Layer: 0
   m_Name: LeftOven
   m_TagString: Untagged
@@ -735,6 +736,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65418557354202390
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1117864603600294}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9019152, y: 0.6117327, z: 1.6610863}
+  m_Center: {x: -0.049042463, y: 0.24732172, z: -0.3043574}
 --- !u!65 &65712111274250070
 BoxCollider:
   m_ObjectHideFlags: 1
