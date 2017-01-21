@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour {
     private static GameManager instance;
     private OrderManager orderManager;
 
+	private AudioSource audioSrc;
+	//Remember to put ind sounds if you need them
+	public AudioClip[] endRoundSounds;
+
     public void Awake(){
         if(instance != null)
             throw new UnityException("Multiple game managers found");
@@ -56,6 +60,13 @@ public class GameManager : MonoBehaviour {
                 if(orderManager.orders.Count == 0 && numRoundOrdersLeft == 0){
                     roundRunning = false;
                     roundCleared = true;
+					if (endRoundSounds.Length > 0) {
+						int index = Random.Range (0, endRoundSounds.Length);
+						audioSrc.clip = endRoundSounds [index];
+						if (!audioSrc.isPlaying) {
+							audioSrc.Play ();
+						}
+					}
                 }else{
                     gameRunning = false;
                     roundRunning = false;
