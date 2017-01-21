@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Oven : MonoBehaviour {
 
-	public bool closed = false;
+	public List<GameObject> pizzasInOven;
 	// Use this for initialization
 	void Start () {
 		
@@ -15,16 +15,21 @@ public class Oven : MonoBehaviour {
 		
 	}
 
-	public void isClosed(bool closed){
-		this.closed = closed;
+	public void doorClosed(){
+		foreach (GameObject pizza in pizzasInOven) {
+			pizza.GetComponent<Pizza> ().cook ();
+		}
 	}
 
-	void OnTriggerStay(Collider other) {
-		if (closed) {
-			if (other.tag.Equals ("Pizza")) {
-				Debug.Log ("Cooked!");
-				other.GetComponent<Pizza> ().cook ();
-			}
+	void OnTriggerEnter(Collider other){
+		if (other.tag.Equals ("Pizza")) {
+			pizzasInOven.Add (other.gameObject);
+		}
+	}
+
+	void onTriggerExit(Collider other){
+		if (pizzasInOven.Contains (other.gameObject)) {
+			pizzasInOven.Remove (other.gameObject);
 		}
 	}
 }
