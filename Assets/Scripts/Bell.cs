@@ -71,6 +71,7 @@ public class Bell : MonoBehaviour {
 				}
 			}
 		}
+		yield break;
 	}
 
     private void HandHoverUpdate(Valve.VR.InteractionSystem.Hand hand)

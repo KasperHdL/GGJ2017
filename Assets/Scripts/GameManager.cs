@@ -28,11 +28,13 @@ public class GameManager : MonoBehaviour {
 	private AudioSource audioSrc;
 	//Remember to put ind sounds if you need them
 	public AudioClip[] endRoundSounds;
+	public AudioClip music;
 
     public void Awake(){
         if(instance != null)
             throw new UnityException("Multiple game managers found");
         instance = this;
+		audioSrc = GetComponent<AudioSource>();
     }
 
     public static GameManager getInstance(){
@@ -61,6 +63,8 @@ public class GameManager : MonoBehaviour {
                     roundRunning = false;
                     roundCleared = true;
 					if (endRoundSounds.Length > 0) {
+						audioSrc.Stop ();
+						audioSrc.loop = false;
 						int index = Random.Range (0, endRoundSounds.Length);
 						audioSrc.clip = endRoundSounds [index];
 						if (!audioSrc.isPlaying) {
@@ -89,8 +93,23 @@ public class GameManager : MonoBehaviour {
          level = 0;
 
         newRound();
+		StartCoroutine (fadeIn ());
+
         orderManager.clear();
     }
+
+	IEnumerator fadeIn(){
+		audioSrc.clip = music;
+		audioSrc.loop = true;
+		audioSrc.volume = 0;
+		audioSrc.Play ();
+		while (audioSrc.volume != 1) {
+			audioSrc.volume += Time.deltaTime;
+			Debug.Log (audioSrc.volume);
+			yield return new WaitForSeconds (0.2f);
+		}
+		yield break;
+	}
 
     public void newRound(){
         if(!gameRunning || !roundRunning) startGame();
