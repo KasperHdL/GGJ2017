@@ -18,7 +18,8 @@ public class Pizza : MonoBehaviour {
 	}
 
     void OnCollisionEnter(Collision coll){
-        if(coll.gameObject.tag == "Ingredient"){
+        Debug.Log("ASdAS");
+        if (coll.gameObject.tag == "Ingredient"){
             for(int i = 0; i < ingredients.Count; i++){
                 if(ingredients[i] == coll.gameObject.GetComponent<Ingredient>()){
                     return;
@@ -27,10 +28,10 @@ public class Pizza : MonoBehaviour {
 
             ingredients.Add(coll.gameObject.GetComponent<Ingredient>());
 
-            coll.transform.SetParent(transform, true);
             coll.transform.localScale = Vector3.one;
             coll.transform.position = coll.contacts[0].point;
-            coll.transform.GetComponent<Rigidbody>().isKinematic = true;
+            coll.transform.parent.GetComponent<Rigidbody>().isKinematic = true;
+            coll.transform.SetParent(transform, true);
 
         }
 
