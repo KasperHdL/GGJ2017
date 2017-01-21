@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4516993697301774}
   - component: {fileID: 114599564505524942}
   - component: {fileID: 114620582997581754}
+  - component: {fileID: 114724894178386402}
   m_Layer: 0
   m_Name: Systems
   m_TagString: Untagged
@@ -76,3 +77,14 @@ MonoBehaviour:
   orders: []
   orderSlots: 
   orderCount: 0
+--- !u!114 &114724894178386402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522750408264100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc99e60f9fe8b4e11b10eb2569f83f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

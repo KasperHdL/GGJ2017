@@ -26,8 +26,9 @@ public class Pizza : MonoBehaviour {
 	void Start () {
         ingredientCount = new int[model.ingredientTypes.Length];
 		dummyIngredients = new List<GameObject> ();
-		
-	}
+        audioSrc = GetComponent<AudioSource>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -50,7 +51,7 @@ public class Pizza : MonoBehaviour {
 
 	public void pickedUp(){
 		if (pizzaPickupSounds.Length > 0) {
-			int index = Random.Range (0, pizzaPickupSounds.Length + 1);
+			int index = Random.Range (0, pizzaPickupSounds.Length);
 			audioSrc.clip = pizzaPickupSounds [index];
 			if (!audioSrc.isPlaying) {
 				audioSrc.Play ();
@@ -70,17 +71,19 @@ public class Pizza : MonoBehaviour {
 	}
 
     void OnCollisionEnter(Collision coll){
-		if (coll.gameObject.tag == "Ingredient") {
-			if (ingrdientSounds.Length > 0) {
-				int index = Random.Range (0, ingrdientSounds.Length + 1);
+        if (cooked) return;
+
+        if (coll.gameObject.tag == "Ingredient")
+        {
+            if (ingrdientSounds.Length > 0) {
+				int index = Random.Range (0, ingrdientSounds.Length);
 				audioSrc.clip = ingrdientSounds [index];
 				if (!audioSrc.isPlaying) {
 					audioSrc.Play ();
 				}
 			}
+
 			Ingredient ingredient = coll.gameObject.GetComponent<Ingredient> ();
-			if (ingredient.renderer.enabled == false)
-				return;
 
 			int i = 0;
 			for (; i < model.ingredientTypes.Length; i++) {
@@ -93,13 +96,14 @@ public class Pizza : MonoBehaviour {
 			GameObject g = Instantiate (model.prefabIngredients [i], t.position, t.rotation);
 			dummyIngredients.Add (g);
 
+
 			g.transform.SetParent (ingredientContainer, true);
 			ingredientCount [i]++;
 			ingredient.renderer.enabled = false;
 
 		} else if (cooked&&coll.gameObject.name=="Floor") {
 			if (missSounds.Length > 0) {
-				int index = Random.Range (0, missSounds.Length + 1);
+				int index = Random.Range (0, missSounds.Length);
 				audioSrc.clip = missSounds [index];
 				if (!audioSrc.isPlaying) {
 					audioSrc.Play ();

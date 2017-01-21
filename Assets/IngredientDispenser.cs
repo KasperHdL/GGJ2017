@@ -8,6 +8,14 @@ namespace Valve.VR.InteractionSystem
     [RequireComponent(typeof(Interactable))]
     public class IngredientDispenser : MonoBehaviour {
         public GameObject prefab;
+        public List<GameObject> objects;
+        public List<int> freeObjects;
+
+        public void Start()
+        {
+            objects = new List<GameObject>();
+            freeObjects = new List<int>();
+        }
 
         private void HandHoverUpdate(Hand hand)
         {
@@ -15,11 +23,34 @@ namespace Valve.VR.InteractionSystem
             if (hand.GetStandardInteractionButtonDown())
             {
                 Transform attachPoint = hand.transform;
-                GameObject ingredient = Instantiate(prefab, hand.GetAttachmentTransform().position, Quaternion.identity);
-                Throwable throwIng = ingredient.GetComponent<Throwable>();
+                GameObject g;
+                if(freeObjects.Count == 0)
+                    g = Instantiate(prefab, hand.GetAttachmentTransform().position, Quaternion.identity);
+                else
+                {
+                    g = objects[freeObjects[0]];
+                    freeObjects.RemoveAt(0);
+                    g.GetComponent<Collider>().enabled = true;
+                    g.GetComponent<Rigidbody>().isKinematic = false;
+                    g.transform.position = hand.GetAttachmentTransform().position;
 
-                hand.AttachObject(ingredient, throwIng.attachmentFlags, throwIng.attachmentPoint);
+                }
+
+                Ingredient i = g.GetComponent<Ingredient>();
+                i.renderer.enabled = true;
+                
+                i.dispenser = this;
+                i.dispenserIndex = objects.Count;
+                Throwable throwIng = g.GetComponent<Throwable>();
+
+                hand.AttachObject(g, throwIng.attachmentFlags, throwIng.attachmentPoint);
+                objects.Add(g);
             }
+        }
+
+        public void recycleMe(int index)
+        {
+            freeObjects.Add(index);
         }
     }
 }

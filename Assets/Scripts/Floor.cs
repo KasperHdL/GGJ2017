@@ -54,7 +54,7 @@ public class Floor : MonoBehaviour {
                 destroyIngredientTime.RemoveAt(i);
 
                 Instantiate(prefabWrongParticleSystem, activeIngredients[i].transform.position, prefabWrongParticleSystem.transform.rotation);
-                Destroy(activeIngredients[i].gameObject);
+                activeIngredients[i].destroy();
                 activeIngredients.RemoveAt(i);
 
             }
