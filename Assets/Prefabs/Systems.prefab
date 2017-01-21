@@ -64,8 +64,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbb723ba0a064eb4bfadbc693ab767e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingredientTypes: 000000000100000002000000
+  modelOrder: {fileID: 11400000, guid: a96c8512c38864f729e32a27e3413952, type: 2}
+  modelPizza: {fileID: 11400000, guid: 23ac3f5dba3b54ab88be44c49ed9ee11, type: 2}
   numTables: 3
-  numIngredients: 3
   maxNumOrders: 10
   orderOrigin: {fileID: 0}
   orderOffset: {x: 0.3, y: 0, z: 0}

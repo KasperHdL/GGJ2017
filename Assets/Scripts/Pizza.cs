@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Pizza : MonoBehaviour {
 
+    public ModelPizza model;
     public Transform ingredientContainer;
-    public List<Ingredient> ingredients;
-    public Transform attachPoint;
+    public int[] ingredientCount;
 
 	// Use this for initialization
 	void Start () {
-        ingredients = new List<Ingredient>();
+        ingredientCount = new int[model.ingredientTypes.Length];
 		
 	}
 	
@@ -21,21 +21,21 @@ public class Pizza : MonoBehaviour {
 
     void OnCollisionEnter(Collision coll){
         if (coll.gameObject.tag == "Ingredient"){
-            for(int i = 0; i < ingredients.Count; i++){
-                if(ingredients[i] == coll.gameObject.GetComponent<Ingredient>()){
-                    return;
-                }
+            Ingredient.Type type = coll.gameObject.GetComponent<Ingredient>().type;
+
+            int i = 0;
+            for(;i < model.ingredientTypes.Length; i++){
+                if(model.ingredientTypes[i] == type)
+                    break;
             }
 
-            ingredients.Add(coll.gameObject.GetComponent<Ingredient>());
+            Transform t = coll.transform;
 
-            Rigidbody body = coll.transform.GetComponent<Rigidbody>();
-            body.isKinematic = true;
+            GameObject g = Instantiate(model.prefabIngredients[i], t.position, t.rotation);
 
-
-            coll.transform.SetParent(ingredientContainer, true);
-            coll.transform.position = attachPoint.position;
-            coll.collider.enabled = false;
+            g.transform.SetParent(ingredientContainer, true);
+            ingredientCount[i]++;
+            Destroy(coll.gameObject);
 
         }
 

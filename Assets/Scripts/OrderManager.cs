@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class OrderManager : MonoBehaviour {
 
-    public int numTables = 3;
-    public int numIngredients = 3;
+    public Ingredient.Type[] ingredientTypes;
+    [Header("Models")]
+    public ModelOrder modelOrder;
+    public ModelPizza modelPizza;
 
+    public int numTables = 3;
     public int maxNumOrders;
     public Transform orderOrigin;
     public Vector3 orderOffset;
@@ -18,6 +21,7 @@ public class OrderManager : MonoBehaviour {
     public int orderCount = 0;
 
 
+    private ScoreManager scoreManager;
     private static OrderManager instance;
 
     public void Awake(){
@@ -33,6 +37,10 @@ public class OrderManager : MonoBehaviour {
     public void Start(){
         orders = new List<Order>();
         orderSlots = new bool[maxNumOrders];
+        scoreManager = ScoreManager.getInstance();
+
+        modelOrder.ingredientTypes = ingredientTypes;
+        modelPizza.ingredientTypes = ingredientTypes;
 
     }
 
@@ -68,7 +76,7 @@ public class OrderManager : MonoBehaviour {
         GameObject g = Instantiate(prefabOrder, orderOrigin.transform.position + orderOffset * orderIndex, Quaternion.identity) as GameObject;
         Order o = g.GetComponent<Order>();
 
-        int[] ingredientCount = new int[numIngredients];
+        int[] ingredientCount = new int[ingredientTypes.Length];
 
         for(int i = 0; i < ingredientCount.Length; i++){
             ingredientCount[i] = Random.Range(0, 4);
@@ -82,44 +90,31 @@ public class OrderManager : MonoBehaviour {
     }
 
     public void delivered(Pizza pizza){
-        int[] ingredientCount = new int[numIngredients];
-
-        if(pizza.ingredients == null)
-            return;
-
-        for(int i = 0; i < pizza.ingredients.Count; i++){
-            ingredientCount[pizza.ingredients[i].type]++;
-        }
 
         bool found = false;
-        for(int i = 0; i < orders.Count; i++){
-            bool b = true;
+        int i = 0;
+        for(; i < orders.Count; i++){
+            bool correctIngredients = true;
             for(int j = 0; j < orders[i].ingredientCount.Length; j++){
-                if(ingredientCount[j] != orders[i].ingredientCount[j]){
-                    b = false;
+                if(pizza.ingredientCount[j] != orders[i].ingredientCount[j]){
+                    correctIngredients = false;
                     break;
                 }
 
             }
-            if(!b)
+            if(!correctIngredients)
                 continue;
 
             found = true;
-            //correct order!?
-            Debug.Log(ingredientCount);
-            Debug.Log(orders[i].ingredientCount);
-            
-            ScoreManager.getInstance().score++;
-
-
-        }
-        if(!found){
-            Debug.Log("WRONG!?");
-
+            break;
         }
 
+        if(found){
+            scoreManager.score++;
+        }else{
+            Debug.Log("NOT FOUND");
 
-
+        }
 
     }
 
