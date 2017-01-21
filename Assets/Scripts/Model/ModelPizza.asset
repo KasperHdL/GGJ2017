@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c41fc7704988438aa3b33cea4776865, type: 3}
+  m_Name: ModelPizza
+  m_EditorClassIdentifier: 
+  ingredientTypes: 000000000100000002000000
+  prefabIngredients:
+  - {fileID: 1864197509274844, guid: b46b7214235964edfa27697f461bade1, type: 2}
+  - {fileID: 1074999316672852, guid: 55c629a8bb72a48798ce33e95fe273e2, type: 2}

@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 64500646722530894}
   - component: {fileID: 114264734260676186}
   m_Layer: 0
-  m_Name: ThrowableMushroom
+  m_Name: Mushroom
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ingredient : MonoBehaviour {
+    public enum Type{
+        Mushroom,
+        Cheese,
+        Salami
+    }
 
-    public int type;
+    public Type type;
 
 	// Use this for initialization
 	void Start () {
