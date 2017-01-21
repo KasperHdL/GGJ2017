@@ -6,8 +6,8 @@ public class Oven : MonoBehaviour {
 
     public bool _doorClosed = false;
 	public List<Pizza> pizzasInOven;
-	public List<GameObject> pizzasInOven;
 	private AudioSource audioSrc;
+	//Remember to put ind sounds if you need them
 	public AudioClip[] bakeSounds;
 	// Use this for initialization
 	void Start () {
@@ -28,10 +28,13 @@ public class Oven : MonoBehaviour {
         }
     }
 	public void doorClosed(){
+		//play sounds of the pizza being baked
 		int index = Random.Range (0, bakeSounds.Length + 1);
-		audioSrc.clip = bakeSounds [index];
-		if (!audioSrc.isPlaying) {
-			audioSrc.Play ();
+		if (bakeSounds [index] != null) {
+			audioSrc.clip = bakeSounds [index];
+			if (!audioSrc.isPlaying) {
+				audioSrc.Play ();
+			}
 		}
 		foreach (GameObject pizza in pizzasInOven) {
 			pizza.GetComponent<Pizza> ().cook ();
