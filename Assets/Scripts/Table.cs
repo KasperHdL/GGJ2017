@@ -74,7 +74,7 @@ public class Table : MonoBehaviour {
                 destroyIngredientTime.RemoveAt(i);
 
                 Instantiate(prefabWrongParticleSystem, activeIngredients[i].transform.position, Quaternion.identity);
-                Destroy(activeIngredients[i].gameObject);
+                activeIngredients[i].destroy();
                 activeIngredients.RemoveAt(i);
 
             }

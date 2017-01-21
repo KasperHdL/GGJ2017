@@ -37,8 +37,6 @@ public class Pizza : MonoBehaviour {
     void OnCollisionEnter(Collision coll){
         if (coll.gameObject.tag == "Ingredient"){
             Ingredient ingredient = coll.gameObject.GetComponent<Ingredient>();
-            if (ingredient.renderer.enabled == false)
-                return;
 
             int i = 0;
             for(;i < model.ingredientTypes.Length; i++){
@@ -53,7 +51,6 @@ public class Pizza : MonoBehaviour {
 
             g.transform.SetParent(ingredientContainer, true);
             ingredientCount[i]++;
-            ingredient.renderer.enabled = false;
 
         }
 
