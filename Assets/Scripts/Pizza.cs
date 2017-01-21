@@ -6,6 +6,7 @@ public class Pizza : MonoBehaviour {
 
     public Transform ingredientContainer;
     public List<Ingredient> ingredients;
+    public Transform attachPoint;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +20,6 @@ public class Pizza : MonoBehaviour {
 	}
 
     void OnCollisionEnter(Collision coll){
-        Debug.Log("ASdAS");
         if (coll.gameObject.tag == "Ingredient"){
             for(int i = 0; i < ingredients.Count; i++){
                 if(ingredients[i] == coll.gameObject.GetComponent<Ingredient>()){
@@ -34,7 +34,7 @@ public class Pizza : MonoBehaviour {
 
 
             coll.transform.SetParent(ingredientContainer, true);
-            coll.transform.position = coll.contacts[0].point;
+            coll.transform.position = attachPoint.position;
             coll.collider.enabled = false;
 
         }
