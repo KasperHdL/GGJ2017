@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientTypes: 000000000100000002000000
   ingredientSprites:
-  - {fileID: 21300000, guid: 7b91de1ef79764abb8d53673e716eefb, type: 3}
-  - {fileID: 21300000, guid: d42b2a68b194d46e89ba99d55b8ed72b, type: 3}
-  - {fileID: 21300000, guid: 32d2bf26b02424ff3a7ac3e581259d1e, type: 3}
+  - {fileID: 21300000, guid: f55a6a111da406c45987c19c5286e313, type: 3}
+  - {fileID: 21300000, guid: 80b0002c936f47d45b367534d5a2a898, type: 3}
+  - {fileID: 21300000, guid: 2b275d66629c2aa48b90bda427e9df35, type: 3}

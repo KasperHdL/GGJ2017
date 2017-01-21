@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1584180543620788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.483, y: 0.986, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4700904213135844}
@@ -234,6 +234,8 @@ MonoBehaviour:
   ingredientContainer: {fileID: 4884851433746244}
   ingredientCount: 
   cooked: 0
+  renderer: {fileID: 23296237970559378}
+  interactable: {fileID: 114971415786705646}
   dummyIngredients: []
 --- !u!114 &114429550403251062
 MonoBehaviour:
@@ -260,3 +262,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disable: 0

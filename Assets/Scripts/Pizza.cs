@@ -8,8 +8,10 @@ public class Pizza : MonoBehaviour {
     public Transform ingredientContainer;
     public int[] ingredientCount;
 	public bool cooked = false;
+    public Renderer renderer;
+    public Valve.VR.InteractionSystem.Interactable interactable;
 
-	public List<GameObject> dummyIngredients;
+    public List<GameObject> dummyIngredients;
 	// Use this for initialization
 	void Start () {
         ingredientCount = new int[model.ingredientTypes.Length];
@@ -26,15 +28,17 @@ public class Pizza : MonoBehaviour {
 		cooked = true;
 		foreach (GameObject child in dummyIngredients) {
             Ingredient i = child.GetComponent<Ingredient>();
-            child.GetComponent<Renderer>().material = i.model.cookedMaterial;
+            i.renderer.material = i.model.cookedMaterial;
 		}
 
-        GetComponent<Renderer>().material = model.cookedMaterial;
+        renderer.material = model.cookedMaterial;
 	}
 
     void OnCollisionEnter(Collision coll){
         if (coll.gameObject.tag == "Ingredient"){
             Ingredient ingredient = coll.gameObject.GetComponent<Ingredient>();
+            if (ingredient.renderer.enabled == false)
+                return;
 
             int i = 0;
             for(;i < model.ingredientTypes.Length; i++){
@@ -49,7 +53,7 @@ public class Pizza : MonoBehaviour {
 
             g.transform.SetParent(ingredientContainer, true);
             ingredientCount[i]++;
-            Destroy(coll.gameObject);
+            ingredient.renderer.enabled = false;
 
         }
 

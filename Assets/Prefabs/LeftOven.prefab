@@ -178,10 +178,9 @@ GameObject:
   - component: {fileID: 4278580333992102}
   - component: {fileID: 33874147857605794}
   - component: {fileID: 23895113477798284}
-  - component: {fileID: 64885820084636028}
-  - component: {fileID: 136763720482035158}
   - component: {fileID: 114084723830633128}
   - component: {fileID: 114156551459237200}
+  - component: {fileID: 65013515813196120}
   m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
@@ -664,20 +663,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1888689079257196}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64885820084636028
-MeshCollider:
+--- !u!65 &65013515813196120
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1888689079257196}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Size: {x: 0.1, y: 19.23, z: 0.1}
+  m_Center: {x: 0.03, y: 0, z: -0.4}
 --- !u!65 &65027493482043128
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -899,6 +896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disable: 0
 --- !u!114 &114156551459237200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -910,6 +908,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f32883eed859804dbb0c5fedac91496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonReleased: 1
+  oven: {fileID: 114498230423492592}
+  snapZone: 5
+  gravity: 0.05
+  currentlyClosed: 0
   axisOfRotation: 1
   childCollider: {fileID: 0}
   linearMapping: {fileID: 0}
@@ -964,6 +967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9726d0d7bbf6fd4185f6c9490b0816c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _doorClosed: 0
   pizzasInOven: []
   bakeSounds: []
 --- !u!136 &136763720482035158

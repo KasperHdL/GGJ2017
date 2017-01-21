@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: 57fb7c8683deb46c3b0e97b5890c69b4
-timeCreated: 1485009492
+timeCreated: 1485009727
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - prefabWrongParticleSystem: {fileID: 1306235709523846, guid: 608eaac0f32454a55a1149cce4a03419,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

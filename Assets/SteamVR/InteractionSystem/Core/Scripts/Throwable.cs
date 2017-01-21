@@ -46,10 +46,13 @@ namespace Valve.VR.InteractionSystem
 
 		public bool snapAttachEaseInCompleted = false;
 
+        public Interactable interactable;
+
 
 		//-------------------------------------------------
 		void Awake()
 		{
+            interactable = GetComponent<Interactable>();
 			velocityEstimator = GetComponent<VelocityEstimator>();
 
 			if ( attachEaseIn )
@@ -65,8 +68,7 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void OnHandHoverBegin( Hand hand )
 		{
-			bool showHint = false;
-
+            if (interactable.disable) return;
 			// "Catch" the throwable by holding down the interaction button instead of pressing it.
 			// Only do this if the throwable is moving faster than the prescribed threshold speed,
 			// and if it isn't attached to another hand
@@ -78,40 +80,29 @@ namespace Valve.VR.InteractionSystem
 					if ( rb.velocity.magnitude >= catchSpeedThreshold )
 					{
 						hand.AttachObject( gameObject, attachmentFlags, attachmentPoint );
-						showHint = false;
 					}
 				}
 			}
-
-			if ( showHint )
-			{
-				ControllerButtonHints.ShowButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
-			}
 		}
-
-
-		//-------------------------------------------------
-		private void OnHandHoverEnd( Hand hand )
-		{
-			ControllerButtonHints.HideButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
-		}
-
 
 		//-------------------------------------------------
 		private void HandHoverUpdate( Hand hand )
 		{
-			//Trigger got pressed
-			if ( hand.GetStandardInteractionButtonDown() )
+            if (interactable.disable) return;
+
+            //Trigger got pressed
+            if ( hand.GetStandardInteractionButtonDown() )
 			{
 				hand.AttachObject( gameObject, attachmentFlags, attachmentPoint );
-				ControllerButtonHints.HideButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
 			}
 		}
 
 		//-------------------------------------------------
 		private void OnAttachedToHand( Hand hand )
 		{
-			attached = true;
+            if (interactable.disable) return;
+
+            attached = true;
 
 			onPickUp.Invoke();
 
@@ -201,8 +192,10 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void HandAttachedUpdate( Hand hand )
 		{
-			//Trigger got released
-			if ( !hand.GetStandardInteractionButton() )
+            if (interactable.disable) return;
+
+            //Trigger got released
+            if ( !hand.GetStandardInteractionButton() )
 			{
 				// Detach ourselves late in the frame.
 				// This is so that any vehicles the player is attached to

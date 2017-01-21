@@ -282,6 +282,11 @@ namespace Valve.VR.InteractionSystem
 			int index = attachedObjects.FindIndex( l => l.attachedObject == objectToDetach );
 			if ( index != -1 )
 			{
+                if (objectToDetach.tag == "Ingredient" && objectToDetach.GetComponent<Ingredient>().renderer.enabled == false)
+                {
+                    Destroy(objectToDetach);
+                }
+
 				HandDebugLog( "DetachObject " + objectToDetach );
 
 				GameObject prevTopObject = currentAttachedObject;
