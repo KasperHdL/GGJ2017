@@ -319,26 +319,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 108128965673351496, guid: 3b1ab3ffad6baca438dd50671b784fca,
-        type: 2}
-      propertyPath: m_Intensity
-      value: 5.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 108128965673351496, guid: 3b1ab3ffad6baca438dd50671b784fca,
-        type: 2}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 108128965673351496, guid: 3b1ab3ffad6baca438dd50671b784fca,
-        type: 2}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 108128965673351496, guid: 3b1ab3ffad6baca438dd50671b784fca,
-        type: 2}
-      propertyPath: m_Range
-      value: 1.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b1ab3ffad6baca438dd50671b784fca, type: 2}
   m_IsPrefabParent: 0

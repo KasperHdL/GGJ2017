@@ -181,7 +181,6 @@ GameObject:
   - component: {fileID: 114084723830633128}
   - component: {fileID: 114156551459237200}
   - component: {fileID: 65013515813196120}
-  - component: {fileID: 136763720482035158}
   m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
@@ -839,7 +838,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -862,12 +861,12 @@ Light:
   serializedVersion: 7
   m_Type: 2
   m_Color: {r: 1, g: 0.68275857, b: 0, a: 1}
-  m_Intensity: 2.59
-  m_Range: 1
+  m_Intensity: 5.76
+  m_Range: 1.5
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -877,7 +876,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -910,9 +909,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReleased: 1
-  oven: {fileID: 0}
+  oven: {fileID: 114498230423492592}
   snapZone: 5
-  gravity: 0
+  gravity: 0.05
   currentlyClosed: 0
   axisOfRotation: 1
   childCollider: {fileID: 0}
@@ -971,22 +970,9 @@ MonoBehaviour:
   _doorClosed: 0
   pizzasInOven: []
   bakeSounds:
-  - {fileID: 8300000, guid: 8d041dec98f98284e9435fe13bc9bcee, type: 3}
-  - {fileID: 8300000, guid: becbc8de8b8d6814fb0102b0613bf676, type: 3}
-  - {fileID: 8300000, guid: 9670a19ab29b7dd4d85a7046ab5df8dd, type: 3}
-  - {fileID: 8300000, guid: a1076bc89bdea51409929e2160b65295, type: 3}
-  - {fileID: 8300000, guid: 0f4455713ff14f54a9f7d06e2cd482bf, type: 3}
-  - {fileID: 8300000, guid: c2aaa43e9e97bcf41ab6bc8f8e9ca12f, type: 3}
---- !u!136 &136763720482035158
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1888689079257196}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 34.33
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
