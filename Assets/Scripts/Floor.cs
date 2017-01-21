@@ -72,8 +72,8 @@ public class Floor : MonoBehaviour {
         else if(coll.gameObject.tag == "Ingredient"){
             Ingredient ing = coll.gameObject.GetComponent<Ingredient>();
 
-            for(int i = 0;i < activePizzas.Count; i++){
-                if(ing == activePizzas[i])
+            for(int i = 0;i < activeIngredients.Count; i++){
+                if(ing == activeIngredients[i])
                     return;
             }
             activeIngredients.Add(ing);

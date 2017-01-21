@@ -73,7 +73,7 @@ public class Table : MonoBehaviour {
             if(Time.time >= destroyIngredientTime[i]){
                 destroyIngredientTime.RemoveAt(i);
 
-                Instantiate(prefabWrongParticleSystem, activePizzas[i].transform.position, Quaternion.identity);
+                Instantiate(prefabWrongParticleSystem, activeIngredients[i].transform.position, Quaternion.identity);
                 Destroy(activeIngredients[i].gameObject);
                 activeIngredients.RemoveAt(i);
 
@@ -95,8 +95,8 @@ public class Table : MonoBehaviour {
         }else if(coll.gameObject.tag == "Ingredient"){
             Ingredient ing = coll.gameObject.GetComponent<Ingredient>();
 
-            for(int i = 0;i < activePizzas.Count; i++){
-                if(ing == activePizzas[i])
+            for(int i = 0;i < activeIngredients.Count; i++){
+                if(ing == activeIngredients[i])
                     return;
             }
             activeIngredients.Add(ing);
