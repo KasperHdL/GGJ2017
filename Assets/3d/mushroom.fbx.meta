@@ -1,24 +1,14 @@
 fileFormatVersion: 2
-guid: a6e66a372555e410a816422a9b3e86ca
-timeCreated: 1484941104
+guid: b2893da33e109437aa5da4dc7bc6482f
+timeCreated: 1484949664
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: nurbsCircle1
-    100004: nurbsCircle2
-    100006: nurbsCircle3
-    100008: pCylinder1
     400000: //RootNode
-    400002: nurbsCircle1
-    400004: nurbsCircle2
-    400006: nurbsCircle3
-    400008: pCylinder1
     2300000: //RootNode
-    2300002: pCylinder1
     3300000: //RootNode
-    3300002: pCylinder1
     4300000: pCylinder1
     9500000: //RootNode
   materials:
@@ -45,7 +35,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 7
+    globalScale: 3
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

@@ -5,12 +5,15 @@ using UnityEngine;
 public class Table : MonoBehaviour {
 
     public float minPizzaTime = 2f;
-    private List<GameObject> activePizzas;
+    public OrderManager orderManager;
+
+    private List<Pizza> activePizzas;
     private List<float> acceptedTime;
 
 	void Start () {
+        orderManager = GameObject.Find("Systems").GetComponent<OrderManager>();
 
-        activePizzas = new List<GameObject>();
+        activePizzas = new List<Pizza>();
         acceptedTime = new List<float>();
 		
 	}
@@ -21,28 +24,40 @@ public class Table : MonoBehaviour {
             if(Time.time >= acceptedTime[i]){
                 //TODO GIVE POINT REMOVE PIZZA N STUFF
 
+                acceptedTime.RemoveAt(i);
+
+                orderManager.delivered(activePizzas[i]);
+
                 Destroy(activePizzas[i]);
                 activePizzas.RemoveAt(i);
-                acceptedTime.RemoveAt(i);
 
             }
         }
 	}
 
     void OnCollisionEnter(Collision coll){
-        for(int i = 0;i < activePizzas.Count; i++){
-            if(coll.gameObject == activePizzas[i])
-                return;
+        if(coll.gameObject.tag == "Pizza"){
+            Pizza p = coll.gameObject.GetComponent<Pizza>();
+
+            for(int i = 0;i < activePizzas.Count; i++){
+                if(p == activePizzas[i])
+                    return;
+            }
+            activePizzas.Add(p);
+            acceptedTime.Add(Time.time + minPizzaTime);
         }
-        activePizzas.Add(coll.gameObject);
-        acceptedTime.Add(Time.time + minPizzaTime);
     }
 
     void OnCollisionExit(Collision coll){
-        for(int i = 0;i < activePizzas.Count; i++){
-            if(coll.gameObject == activePizzas[i])
-                activePizzas.RemoveAt(i);
-                acceptedTime.RemoveAt(i);
+        if(coll.gameObject.tag == "Pizza"){
+            Pizza p = coll.gameObject.GetComponent<Pizza>();
+
+            for(int i = 0;i < activePizzas.Count; i++){
+                if(p == activePizzas[i]){
+                    activePizzas.RemoveAt(i);
+                    acceptedTime.RemoveAt(i);
+                }
+            }
         }
 
     }
