@@ -4,17 +4,33 @@ using UnityEngine;
 
 public class Table : MonoBehaviour {
 
+    public GameObject prefabParticleSystem;
+
     public float minPizzaTime = 2f;
     private OrderManager orderManager;
 
     private List<Pizza> activePizzas;
     private List<float> acceptedTime;
 
+    public Transform[] legs;
+    public float legOffset = 0.9f;
+
 	void Start () {
         orderManager = OrderManager.getInstance();
 
         activePizzas = new List<Pizza>();
         acceptedTime = new List<float>();
+
+        Vector3 scale = transform.localScale / 2;
+
+        float x = scale.x * legOffset;
+        float y = -0.5f;
+        float z = scale.z * legOffset;
+        
+        legs[0].transform.localPosition = new Vector3(x  , y , z);
+        legs[1].transform.localPosition = new Vector3(-x , y , z);
+        legs[2].transform.localPosition = new Vector3(x  , y , -z);
+        legs[3].transform.localPosition = new Vector3(-x , y , -z);
 		
 	}
 	
@@ -25,6 +41,9 @@ public class Table : MonoBehaviour {
                 //TODO GIVE POINT REMOVE PIZZA N STUFF
 
                 acceptedTime.RemoveAt(i);
+
+                GameObject g = Instantiate(prefabParticleSystem, activePizzas[i].transform.position, Quaternion.identity) as GameObject;
+
 
                 orderManager.delivered(activePizzas[i]);
 
