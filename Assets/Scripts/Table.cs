@@ -7,11 +7,15 @@ public class Table : MonoBehaviour {
     public GameObject prefabCorrectParticleSystem;
     public GameObject prefabWrongParticleSystem;
 
-    public float minPizzaTime = 2f;
+    public float maxPizzaTime = 2f;
+    public float maxIngredientTime = 5f;
     private OrderManager orderManager;
 
     private List<Pizza> activePizzas;
     private List<float> acceptedTime;
+
+    private List<Ingredient> activeIngredients;
+    private List<float> destroyIngredientTime;
 
     public Transform[] legs;
     public float legOffset = 0.9f;
@@ -22,6 +26,11 @@ public class Table : MonoBehaviour {
         activePizzas = new List<Pizza>();
         acceptedTime = new List<float>();
 
+        activeIngredients = new List<Ingredient>();
+        destroyIngredientTime = new List<float>();
+
+
+        //hack table
         Vector3 scale = transform.parent.localScale / 2;
 
         transform.localScale = transform.parent.localScale;
@@ -57,8 +66,19 @@ public class Table : MonoBehaviour {
 
                 Destroy(activePizzas[i].gameObject);
                 activePizzas.RemoveAt(i);
+            }
+        }
+
+        for(int i = activeIngredients.Count - 1;i > -1; i--){
+            if(Time.time >= destroyIngredientTime[i]){
+                destroyIngredientTime.RemoveAt(i);
+
+                Instantiate(prefabWrongParticleSystem, activePizzas[i].transform.position, Quaternion.identity);
+                Destroy(activeIngredients[i].gameObject);
+                activeIngredients.RemoveAt(i);
 
             }
+
         }
 	}
 
@@ -71,7 +91,17 @@ public class Table : MonoBehaviour {
                     return;
             }
             activePizzas.Add(p);
-            acceptedTime.Add(Time.time + minPizzaTime);
+            acceptedTime.Add(Time.time + maxPizzaTime);
+        }else if(coll.gameObject.tag == "Ingredient"){
+            Ingredient ing = coll.gameObject.GetComponent<Ingredient>();
+
+            for(int i = 0;i < activePizzas.Count; i++){
+                if(ing == activePizzas[i])
+                    return;
+            }
+            activeIngredients.Add(ing);
+            destroyIngredientTime.Add(Time.time + maxIngredientTime);
+
         }
     }
 
@@ -86,6 +116,16 @@ public class Table : MonoBehaviour {
                 }
             }
         }
+        else if(coll.gameObject.tag == "Ingredient"){
+            Ingredient ing = coll.gameObject.GetComponent<Ingredient>();
 
+            for(int i = 0;i < activeIngredients.Count; i++){
+                if(ing == activeIngredients[i]){
+                    activeIngredients.RemoveAt(i);
+                    destroyIngredientTime.RemoveAt(i);
+                    break;
+                }
+            }
+        }
     }
 }
