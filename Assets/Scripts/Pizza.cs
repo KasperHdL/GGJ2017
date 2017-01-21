@@ -50,7 +50,7 @@ public class Pizza : MonoBehaviour {
 
             g.transform.SetParent(ingredientContainer, true);
             ingredientCount[i]++;
-            Destroy(coll.gameObject);
+            ingredient.renderer.enabled = false;
 
         }
 

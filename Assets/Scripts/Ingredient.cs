@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Ingredient : MonoBehaviour {
     public enum Type{
@@ -12,4 +13,6 @@ public class Ingredient : MonoBehaviour {
     public Type type;
     public ModelIngredient model;
     public Renderer renderer;
+
+    
 }
