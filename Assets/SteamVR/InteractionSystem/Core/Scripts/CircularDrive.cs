@@ -11,10 +11,19 @@ using System.Collections;
 namespace Valve.VR.InteractionSystem
 {
 
-	//-------------------------------------------------------------------------
-	[RequireComponent( typeof( Interactable ) )]
-	public class CircularDrive : MonoBehaviour
-	{
+    //-------------------------------------------------------------------------
+    [RequireComponent(typeof(Interactable))]
+    public class CircularDrive : MonoBehaviour
+    {
+
+        public bool buttonReleased = true;
+        public Oven oven;
+        public float snapZone = 5f;
+        public float gravity;
+        private float velocity;
+        
+
+        public bool currentlyClosed = false;
 		public enum Axis_t
 		{
 			XAxis,
@@ -209,7 +218,7 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void OnHandHoverBegin( Hand hand )
 		{
-			ControllerButtonHints.ShowButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
+			//ControllerButtonHints.ShowButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
 		}
 
 
@@ -231,7 +240,9 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void HandHoverUpdate( Hand hand )
 		{
-			if ( hand.GetStandardInteractionButtonDown() )
+           // buttonHeld = hand.GetStandardInteractionButton();
+
+            if ( hand.GetStandardInteractionButtonDown() )
 			{
 				// Trigger was just pressed
 				lastHandProjected = ComputeToTransformProjected( hand.hoverSphereTransform );
@@ -240,9 +251,11 @@ namespace Valve.VR.InteractionSystem
 				{
 					hand.HoverLock( GetComponent<Interactable>() );
 					handHoverLocked = hand;
-				}
 
-				driving = true;
+				}
+                buttonReleased = true;
+
+                driving = true;
 
 				ComputeAngle( hand );
 				UpdateAll();
@@ -256,6 +269,7 @@ namespace Valve.VR.InteractionSystem
 				{
 					hand.HoverUnlock( GetComponent<Interactable>() );
 					handHoverLocked = null;
+                    buttonReleased = true;
 				}
 			}
 			else if ( driving && hand.GetStandardInteractionButton() && hand.hoveringInteractable == GetComponent<Interactable>() )
@@ -386,13 +400,31 @@ namespace Valve.VR.InteractionSystem
 			UpdateDebugText();
 		}
 
+        void FixedUpdate()
+        {
+            if (!driving && outAngle != maxAngle)
+            {
+                velocity += gravity;
+                outAngle += velocity;
+
+                outAngle = Mathf.Clamp(outAngle, minAngle, maxAngle);
+                if (outAngle == maxAngle)
+                {
+                    onMaxAngle.Invoke();
+                    velocity = 0;
+                }
+
+                UpdateGameObject();
+            }
+        }
 
 		//-------------------------------------------------
 		// Updates the LinearMapping value from the angle
 		//-------------------------------------------------
 		private void UpdateGameObject()
 		{
-			if ( rotateGameObject )
+            
+            if ( rotateGameObject )
 			{
 				transform.localRotation = start * Quaternion.AngleAxis( outAngle, localPlaneNormal );
 			}
@@ -422,14 +454,17 @@ namespace Valve.VR.InteractionSystem
 		}
 
 
-		//-------------------------------------------------
-		// Computes the angle to rotate the game object based on the change in the transform
-		//-------------------------------------------------
-		private void ComputeAngle( Hand hand )
-		{
-			Vector3 toHandProjected = ComputeToTransformProjected( hand.hoverSphereTransform );
 
-			if ( !toHandProjected.Equals( lastHandProjected ) )
+        //-------------------------------------------------
+        // Computes the angle to rotate the game object based on the change in the transform
+        //-------------------------------------------------
+        private void ComputeAngle( Hand hand )
+        {
+            velocity = 0;
+            Vector3 toHandProjected = ComputeToTransformProjected( hand.hoverSphereTransform );
+
+
+            if ( !toHandProjected.Equals( lastHandProjected ) )
 			{
 				float absAngleDelta = Vector3.Angle( lastHandProjected, toHandProjected );
 
@@ -469,11 +504,10 @@ namespace Valve.VR.InteractionSystem
 						{
 							signedAngleDelta = -signedAngleDelta;
 						}
-
 						if ( limited )
 						{
 							float angleTmp = Mathf.Clamp( outAngle + signedAngleDelta, minAngle, maxAngle );
-
+                            
 							if ( outAngle == minAngle )
 							{
 								if ( angleTmp > minAngle && absAngleDelta < minMaxAngularThreshold )
@@ -504,8 +538,9 @@ namespace Valve.VR.InteractionSystem
 							{
 								outAngle = angleTmp;
 								lastHandProjected = toHandProjected;
-								onMaxAngle.Invoke();
-								if ( freezeOnMax )
+                                onMaxAngle.Invoke();
+
+                                if ( freezeOnMax )
 								{
 									Freeze( hand );
 								}
@@ -515,12 +550,20 @@ namespace Valve.VR.InteractionSystem
 								outAngle = angleTmp;
 								lastHandProjected = toHandProjected;
 							}
+
+                            currentlyClosed = angleTmp == maxAngle;
 						}
 						else
 						{
 							outAngle += signedAngleDelta;
 							lastHandProjected = toHandProjected;
 						}
+
+                        if(oven._doorClosed && !currentlyClosed)
+                        {
+                            oven.doorOpened();
+
+                        }
 					}
 				}
 			}

@@ -45,10 +45,15 @@ public class Floor : MonoBehaviour {
 
 
         for(int i = activeIngredients.Count - 1;i > -1; i--){
-            if(Time.time >= destroyIngredientTime[i]){
+            if(activeIngredients[i] == null || activeIngredients[i].renderer.enabled == false)
+            {
+                destroyIngredientTime.RemoveAt(i);
+                activeIngredients.RemoveAt(i);
+            }
+            else if (Time.time >= destroyIngredientTime[i]){
                 destroyIngredientTime.RemoveAt(i);
 
-                Instantiate(prefabWrongParticleSystem, activePizzas[i].transform.position, prefabWrongParticleSystem.transform.rotation);
+                Instantiate(prefabWrongParticleSystem, activeIngredients[i].transform.position, prefabWrongParticleSystem.transform.rotation);
                 Destroy(activeIngredients[i].gameObject);
                 activeIngredients.RemoveAt(i);
 
@@ -67,9 +72,7 @@ public class Floor : MonoBehaviour {
             }
             activePizzas.Add(p);
             acceptedTime.Add(Time.time + minPizzaTime);
-        }
-
-        else if(coll.gameObject.tag == "Ingredient"){
+        }else if(coll.gameObject.tag == "Ingredient"){
             Ingredient ing = coll.gameObject.GetComponent<Ingredient>();
 
             for(int i = 0;i < activeIngredients.Count; i++){

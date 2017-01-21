@@ -235,6 +235,7 @@ MonoBehaviour:
   ingredientCount: 
   cooked: 0
   renderer: {fileID: 23296237970559378}
+  interactable: {fileID: 114971415786705646}
   dummyIngredients: []
 --- !u!114 &114429550403251062
 MonoBehaviour:
@@ -261,3 +262,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disable: 0

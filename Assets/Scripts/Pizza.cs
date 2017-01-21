@@ -9,8 +9,9 @@ public class Pizza : MonoBehaviour {
     public int[] ingredientCount;
 	public bool cooked = false;
     public Renderer renderer;
+    public Valve.VR.InteractionSystem.Interactable interactable;
 
-	public List<GameObject> dummyIngredients;
+    public List<GameObject> dummyIngredients;
 	// Use this for initialization
 	void Start () {
         ingredientCount = new int[model.ingredientTypes.Length];
@@ -36,6 +37,8 @@ public class Pizza : MonoBehaviour {
     void OnCollisionEnter(Collision coll){
         if (coll.gameObject.tag == "Ingredient"){
             Ingredient ingredient = coll.gameObject.GetComponent<Ingredient>();
+            if (ingredient.renderer.enabled == false)
+                return;
 
             int i = 0;
             for(;i < model.ingredientTypes.Length; i++){
