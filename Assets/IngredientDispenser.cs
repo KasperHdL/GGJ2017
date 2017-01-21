@@ -9,45 +9,16 @@ namespace Valve.VR.InteractionSystem
     public class IngredientDispenser : MonoBehaviour {
         public GameObject prefab;
 
-        private Hand interactingHand;
-        private bool canDispense = true;
-
-        //private void OnHandHoverBegin(Hand hand)
-        //{
-        //    if (interactingHand == null)
-        //    {
-        //        interactingHand = hand;
-        //    }
-        //}
-
         private void HandHoverUpdate(Hand hand)
         {
             //Trigger got pressed
             if (hand.GetStandardInteractionButtonDown())
             {
                 Transform attachPoint = hand.transform;
-                Instantiate(prefab, attachPoint.position, Quaternion.identity);
-            }
-        }
+                GameObject ingredient = Instantiate(prefab, hand.GetAttachmentTransform().position, Quaternion.identity);
+                Throwable throwIng = ingredient.GetComponent<Throwable>();
 
-        private void OnHandHoverEnd(Hand hand)
-        {
-//            if (interactingHand == hand)
-            //{
-
-            //}
-        }
-
-        // Update is called once per frame
-        void Update() {
-
-        }
-
-        void OnTriggerStay(Collider other)
-        {
-            if (other.tag == "GameController")
-            {
-
+                hand.AttachObject(ingredient, throwIng.attachmentFlags, throwIng.attachmentPoint);
             }
         }
     }

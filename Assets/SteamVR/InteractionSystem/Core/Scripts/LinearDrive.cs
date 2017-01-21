@@ -19,9 +19,8 @@ namespace Valve.VR.InteractionSystem
 		public bool repositionGameObject = true;
 		public bool maintainMomentum = true;
 		public float momemtumDampenRate = 5.0f;
-        public float returnSpeed = 5.0f;
+        public float returnSpeed = 0.04f;
 
-        private Rigidbody rb;
         private bool returnToStart;
         private float initialMappingOffset;
 		private int numMappingChangeSamples = 5;
@@ -143,26 +142,18 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		void Update()
 		{
-   //         if ( maintainMomentum && mappingChangeRate != 0.0f  && !returnToStart)
-			//{
-			//	//Dampen the mapping change rate and apply it to the mapping
-			//	mappingChangeRate = Mathf.Lerp( mappingChangeRate, 0.0f, momemtumDampenRate * Time.deltaTime );
-			//	linearMapping.value = Mathf.Clamp01( linearMapping.value + ( mappingChangeRate * Time.deltaTime ) );
-
-			//	if ( repositionGameObject )
-			//	{
-			//		transform.position = Vector3.Lerp( startPosition.position, endPosition.position, linearMapping.value );
-			//	}
-			//}
-		}
-
-        void FixedUpdate ()
-        {
-            if (returnToStart)
+            if (maintainMomentum)
             {
-                Vector3 direction = new Vector3(0, 0.001f, 0);
-                rb.position += direction;
+                //Dampen the mapping change rate and apply it to the mapping
+                mappingChangeRate = Mathf.Lerp(mappingChangeRate, 0.0f, momemtumDampenRate * Time.deltaTime) - (returnToStart ? returnSpeed: 0);
+                linearMapping.value = Mathf.Clamp01(linearMapping.value + (mappingChangeRate * Time.deltaTime));
+                
+                if (repositionGameObject)
+                {
+                    transform.position = Vector3.Lerp(startPosition.position, endPosition.position, linearMapping.value);
+                }
             }
         }
+
 	}
 }

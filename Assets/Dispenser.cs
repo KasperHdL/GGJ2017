@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Dispenser : MonoBehaviour {
-    private Rigidbody rb;
     private bool dispensed = false;
 
     public Transform dispensePoint;
@@ -12,10 +11,6 @@ public class Dispenser : MonoBehaviour {
 
     public GameObject pizzaPrefab;
 
-    void Start ()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
 
 	// Update is called once per frame
 	void Update () {
