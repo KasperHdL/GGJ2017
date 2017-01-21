@@ -128,7 +128,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4468075422155402, guid: 1cb0e9f80afedd944af1155cba053124, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1cb0e9f80afedd944af1155cba053124, type: 2}
@@ -170,7 +170,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4512096243424344, guid: 237af58340566084ebc41c2983aa6e7b, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 237af58340566084ebc41c2983aa6e7b, type: 2}
@@ -236,25 +236,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1456946257 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1846146112356108, guid: e47d91a540eb29f4986f71471f89e6c5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1907880795}
---- !u!114 &1456946258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1456946257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9726d0d7bbf6fd4185f6c9490b0816c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pizzasInOven: []
 --- !u!1 &1562113743
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,20 +299,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &1907880795
+--- !u!1001 &1658460276
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114170492647371518, guid: e47d91a540eb29f4986f71471f89e6c5,
-        type: 2}
-      propertyPath: onMaxAngle.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4691605422868706, guid: e47d91a540eb29f4986f71471f89e6c5, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -360,32 +338,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4691605422868706, guid: e47d91a540eb29f4986f71471f89e6c5, type: 2}
       propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114170492647371518, guid: e47d91a540eb29f4986f71471f89e6c5,
-        type: 2}
-      propertyPath: onMaxAngle.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114170492647371518, guid: e47d91a540eb29f4986f71471f89e6c5,
-        type: 2}
-      propertyPath: onMaxAngle.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114170492647371518, guid: e47d91a540eb29f4986f71471f89e6c5,
-        type: 2}
-      propertyPath: onMaxAngle.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1456946258}
-    - target: {fileID: 114170492647371518, guid: e47d91a540eb29f4986f71471f89e6c5,
-        type: 2}
-      propertyPath: onMaxAngle.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: doorClosed
-      objectReference: {fileID: 0}
-    - target: {fileID: 114170492647371518, guid: e47d91a540eb29f4986f71471f89e6c5,
-        type: 2}
-      propertyPath: onMaxAngle.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e47d91a540eb29f4986f71471f89e6c5, type: 2}
