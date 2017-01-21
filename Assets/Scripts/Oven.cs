@@ -6,11 +6,14 @@ public class Oven : MonoBehaviour {
 
     public bool _doorClosed = false;
 	public List<Pizza> pizzasInOven;
+	private AudioSource audioSrc;
+	//Remember to put ind sounds if you need them
+	public AudioClip[] bakeSounds;
 	// Use this for initialization
 	void Start () {
-		
+		audioSrc = GetComponent<AudioSource> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		
@@ -25,6 +28,17 @@ public class Oven : MonoBehaviour {
         }
     }
 	public void doorClosed(){
+		//play sounds of the pizza being baked
+		if (bakeSounds.Length > 0) {
+			int index = Random.Range (0, bakeSounds.Length);
+			audioSrc.clip = bakeSounds [index];
+			if (!audioSrc.isPlaying) {
+				audioSrc.Play ();
+			}
+		}
+		foreach (Pizza pizza in pizzasInOven) {
+			pizza.GetComponent<Pizza> ().cook ();
+		}
         _doorClosed = true;
 		for (int i = pizzasInOven.Count - 1;i > -1;i--) {
             if (pizzasInOven[i] == null)

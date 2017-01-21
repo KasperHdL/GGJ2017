@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Dispenser : MonoBehaviour {
+
+	private AudioSource audioSrc;
+	//Remember to put ind sounds if you need them
+	public AudioClip[] dispenseSounds;
     private bool dispensed = false;
 
     public Transform dispensePoint;
@@ -12,6 +16,9 @@ public class Dispenser : MonoBehaviour {
     public float dispenseSpeed;
     public GameObject pizzaPrefab;
 
+	void Start(){
+		audioSrc = GetComponent<AudioSource> ();
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -23,6 +30,15 @@ public class Dispenser : MonoBehaviour {
             Vector3 direction = dispenseDirection.position - pizzaSlot.position;
             rb.AddForce(direction * dispenseSpeed, ForceMode.Impulse);
             dispensed = true;
+
+			//Play the sound of the pizza getting despensed!
+			if (dispenseSounds.Length > 0) {
+				int index = Random.Range (0, dispenseSounds.Length);
+				audioSrc.clip = dispenseSounds [index];
+				if (!audioSrc.isPlaying) {
+					audioSrc.Play ();
+				}
+			}
         }
         if (transform.position.y > resetPoint.position.y)
         {

@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Pizza : MonoBehaviour {
 
+	private AudioSource audioSrc;
+	//Remember to put ind sounds if you need them
+	public AudioClip[] missSounds;
+	//Remember to put ind sounds if you need them
+	public AudioClip[] ingrdientSounds;
+	//Remember to put ind sounds if you need them
+	public AudioClip[] pizzaPickupSounds;
+
     public ModelPizza model;
     public Transform ingredientContainer;
     public int[] ingredientCount;
@@ -16,8 +24,9 @@ public class Pizza : MonoBehaviour {
 	void Start () {
         ingredientCount = new int[model.ingredientTypes.Length];
 		dummyIngredients = new List<GameObject> ();
-		
-	}
+        audioSrc = GetComponent<AudioSource>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -34,26 +43,60 @@ public class Pizza : MonoBehaviour {
         renderer.material = model.cookedMaterial;
 	}
 
+	void OnDestroy() {
+		//GameObject soundObject = 
+	}
+
+	public void pickedUp(){
+		if (pizzaPickupSounds.Length > 0) {
+			int index = Random.Range (0, pizzaPickupSounds.Length);
+			audioSrc.clip = pizzaPickupSounds [index];
+			if (!audioSrc.isPlaying) {
+				audioSrc.Play ();
+			}
+		}
+	}
+
     void OnCollisionEnter(Collision coll){
         if (cooked) return;
-        if (coll.gameObject.tag == "Ingredient"){
-            Ingredient ingredient = coll.gameObject.GetComponent<Ingredient>();
 
-            int i = 0;
-            for(;i < model.ingredientTypes.Length; i++){
-                if(model.ingredientTypes[i] == ingredient.type)
-                    break;
-            }
+		if (coll.gameObject.tag == "Ingredient") {
+			if (ingrdientSounds.Length > 0) {
+				int index = Random.Range (0, ingrdientSounds.Length);
+				audioSrc.clip = ingrdientSounds [index];
+				if (!audioSrc.isPlaying) {
+					audioSrc.Play ();
+				}
+			}
+			Ingredient ingredient = coll.gameObject.GetComponent<Ingredient> ();
+			if (ingredient.renderer.enabled == false)
+				return;
 
-            Transform t = coll.transform;
+			int i = 0;
+			for (; i < model.ingredientTypes.Length; i++) {
+				if (model.ingredientTypes [i] == ingredient.type)
+					break;
+			}
 
-            GameObject g = Instantiate(model.prefabIngredients[i], t.position, t.rotation);
+			Transform t = coll.transform;
+
+			GameObject g = Instantiate (model.prefabIngredients [i], t.position, t.rotation);
 			dummyIngredients.Add (g);
 
-            g.transform.SetParent(ingredientContainer, true);
-            ingredientCount[i]++;
 
-        }
+			g.transform.SetParent (ingredientContainer, true);
+			ingredientCount [i]++;
+			ingredient.renderer.enabled = false;
+
+		} else if (cooked&&coll.gameObject.name=="Floor") {
+			if (missSounds.Length > 0) {
+				int index = Random.Range (0, missSounds.Length);
+				audioSrc.clip = missSounds [index];
+				if (!audioSrc.isPlaying) {
+					audioSrc.Play ();
+				}
+			}
+		}
 
     }
 }
