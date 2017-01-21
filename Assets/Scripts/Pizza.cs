@@ -35,6 +35,7 @@ public class Pizza : MonoBehaviour {
 	}
 
     void OnCollisionEnter(Collision coll){
+        if (cooked) return;
         if (coll.gameObject.tag == "Ingredient"){
             Ingredient ingredient = coll.gameObject.GetComponent<Ingredient>();
 

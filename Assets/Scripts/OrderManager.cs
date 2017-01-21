@@ -90,6 +90,7 @@ public class OrderManager : MonoBehaviour {
     }
 
     public bool delivered(Pizza pizza){
+        if (!pizza.cooked) return false;
 
         bool found = false;
         int i = 0;
