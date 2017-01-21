@@ -7,6 +7,8 @@ public class Pizza : MonoBehaviour {
 	private AudioSource audioSrc;
 	//Remember to put ind sounds if you need them
 	public AudioClip[] missSounds;
+	//Remember to put ind sounds if you need them
+	public AudioClip[] ingrdientSounds;
 
     public ModelPizza model;
     public Transform ingredientContainer;
@@ -44,6 +46,13 @@ public class Pizza : MonoBehaviour {
 
     void OnCollisionEnter(Collision coll){
 		if (coll.gameObject.tag == "Ingredient") {
+			if (ingrdientSounds.Length > 0) {
+				int index = Random.Range (0, ingrdientSounds.Length + 1);
+				audioSrc.clip = ingrdientSounds [index];
+				if (!audioSrc.isPlaying) {
+					audioSrc.Play ();
+				}
+			}
 			Ingredient ingredient = coll.gameObject.GetComponent<Ingredient> ();
 			if (ingredient.renderer.enabled == false)
 				return;

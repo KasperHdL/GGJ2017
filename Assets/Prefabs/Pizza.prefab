@@ -323,6 +323,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 554a896996fc85e4e8880ed5d6bb0b64, type: 3}
   - {fileID: 8300000, guid: 3e7b361b0f514744e9b98beb3c12dc53, type: 3}
   - {fileID: 8300000, guid: 919136be0d150d24ebd1400048396a20, type: 3}
+  ingrdientSounds:
+  - {fileID: 8300000, guid: baf1646af35eb554b8191df98a9114a1, type: 3}
+  - {fileID: 8300000, guid: 8703fdb427161004ca28fc162d8015c5, type: 3}
+  - {fileID: 8300000, guid: 64ee7f938aade73428e9cbcb23e50e6f, type: 3}
+  - {fileID: 8300000, guid: bf96e46177556f64e9600a795cb98670, type: 3}
+  - {fileID: 8300000, guid: 8932f47525d98794ab2d09291c367de7, type: 3}
+  - {fileID: 8300000, guid: be416ba351111b0428b0bf18da30cf9d, type: 3}
+  - {fileID: 8300000, guid: 4fb6795682a64064a9cc73be764f3735, type: 3}
+  - {fileID: 8300000, guid: 619b11972e625f648b09042f01b68dea, type: 3}
   model: {fileID: 11400000, guid: 23ac3f5dba3b54ab88be44c49ed9ee11, type: 2}
   ingredientContainer: {fileID: 4884851433746244}
   ingredientCount: 
