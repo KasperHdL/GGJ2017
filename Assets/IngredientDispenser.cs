@@ -12,20 +12,19 @@ namespace Valve.VR.InteractionSystem
         private Hand interactingHand;
         private bool canDispense = true;
 
-        private void OnHandHoverBegin(Hand hand)
-        {
-            if (interactingHand == null)
-            {
-                interactingHand = hand;
-            }
-        }
+        //private void OnHandHoverBegin(Hand hand)
+        //{
+        //    if (interactingHand == null)
+        //    {
+        //        interactingHand = hand;
+        //    }
+        //}
 
         private void HandHoverUpdate(Hand hand)
         {
             //Trigger got pressed
-            if (hand.GetStandardInteractionButtonDown() && canDispense)
+            if (hand.GetStandardInteractionButtonDown())
             {
-                canDispense = false;
                 Transform attachPoint = hand.transform;
                 Instantiate(prefab, attachPoint.position, Quaternion.identity);
             }
@@ -33,10 +32,10 @@ namespace Valve.VR.InteractionSystem
 
         private void OnHandHoverEnd(Hand hand)
         {
-            if (interactingHand == hand)
-            {
-                canDispense = true;
-            }
+//            if (interactingHand == hand)
+            //{
+
+            //}
         }
 
         // Update is called once per frame
