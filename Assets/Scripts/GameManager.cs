@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour {
 
     public void Update() {
 	if (level == 0) {
-	    levelText.text = "Press bell to begin";
+	    levelText.text = "Hit bell to begin";
 	}
 	else {
              levelText.text = "Wave " + level.ToString();
