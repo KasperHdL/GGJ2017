@@ -82,7 +82,7 @@ public class Bell : MonoBehaviour {
     private void OnHandHoverBegin(Valve.VR.InteractionSystem.Hand hand)
     {
         gameManager.startGame();
-        scoreManager.score = 0;
+        
         if (bellSounds.Length > 0)
         {
             int index = Random.Range(0, bellSounds.Length);

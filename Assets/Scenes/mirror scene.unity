@@ -130,6 +130,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114408341631595390, guid: fadac08072247334da58eeed35d6e00f,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fadac08072247334da58eeed35d6e00f, type: 2}
   m_IsPrefabParent: 0
@@ -1734,6 +1739,11 @@ Prefab:
       propertyPath: clockText
       value: 
       objectReference: {fileID: 1314939722}
+    - target: {fileID: 114724894178386402, guid: ad191240abbcf4fd7bfd1e024447afd3,
+        type: 2}
+      propertyPath: ambient
+      value: 
+      objectReference: {fileID: 8300000, guid: da477865a6d3b184d8e6f42d77baa7e3, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad191240abbcf4fd7bfd1e024447afd3, type: 2}
   m_IsPrefabParent: 0
