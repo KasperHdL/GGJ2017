@@ -34,6 +34,13 @@ public class Order : MonoBehaviour {
 
         tableNumberText.text = (tableNumber + 1) + "";
 	}
+
+    public void setDone(){
+        doneImage.enabled = true;
+        for(int i = 0; i < ingredientCount.Length; i++){
+            ingredientImages[i].enabled = false;
+        }
+    }
 	
 	void Update () {
 		

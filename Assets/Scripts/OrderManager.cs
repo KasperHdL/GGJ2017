@@ -119,6 +119,7 @@ public class OrderManager : MonoBehaviour {
             found = true;
 
             orderSlots[orders[i].slot] = false;
+            orders[i].setDone();
             Destroy(orders[i].gameObject, 1.5f);
             orders.RemoveAt(i);
             orderCount--;
