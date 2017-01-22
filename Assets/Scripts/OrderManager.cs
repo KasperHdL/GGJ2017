@@ -56,7 +56,8 @@ public class OrderManager : MonoBehaviour {
 
     public void clear(){
         for(int i = orders.Count - 1;i > -1 ; i--){
-            Destroy(orders[i].gameObject);
+            Destroy(orders[i].gameObject,1.5f);
+            orders[i].setFailed();
             orders.RemoveAt(i);
             orderSlots[i] = false;
             orderCount = 0;

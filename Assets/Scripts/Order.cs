@@ -16,6 +16,7 @@ public class Order : MonoBehaviour {
     public Text tableNumberText;
     public Image[] ingredientImages;
     public Image doneImage;
+    public GameObject failed;
 
 	public void set(int tableNumber, int[] ingredientCount) {
         this.tableNumber = tableNumber;
@@ -37,6 +38,12 @@ public class Order : MonoBehaviour {
 
     public void setDone(){
         doneImage.enabled = true;
+        for(int i = 0; i < ingredientCount.Length; i++){
+            ingredientImages[i].enabled = false;
+        }
+    }
+    public void setFailed(){
+        failed.SetActive(true);
         for(int i = 0; i < ingredientCount.Length; i++){
             ingredientImages[i].enabled = false;
         }
