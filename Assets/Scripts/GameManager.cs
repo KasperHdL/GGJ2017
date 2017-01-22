@@ -118,7 +118,6 @@ public class GameManager : MonoBehaviour {
 		audioSrc.Play ();
 		while (audioSrc.volume != 1) {
 			audioSrc.volume += Time.deltaTime;
-			Debug.Log (audioSrc.volume);
 			yield return new WaitForSeconds (0.2f);
 		}
 		yield break;
