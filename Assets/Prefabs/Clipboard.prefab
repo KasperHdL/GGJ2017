@@ -651,17 +651,27 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Credits
+  m_Text: 'CREDITS
 
-    jsdfkijsdf
+    Game design and development:
 
-    sdfadfg
+    Carl Johan Hanberg
 
-    sghsfgh
+    Jonas V. H. Madsen
 
-    sdfghsfh
+    Kasper Honnes de Licthenberg
 
-    sfghsfgh'
+    Mathias Dam Hedelund
+
+
+    Creative Commons Attribution:
+
+    fredgalist, freesound.org
+
+    150128, freesound.org
+
+
+'
 --- !u!114 &114418376287007832
 MonoBehaviour:
   m_ObjectHideFlags: 1

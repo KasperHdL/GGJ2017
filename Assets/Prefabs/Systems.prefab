@@ -272,7 +272,9 @@ MonoBehaviour:
   roundStartTime: 0
   roundEndTime: 0
   levelText: {fileID: 0}
+  clockText: {fileID: 0}
   endRoundSounds:
   - {fileID: 8300000, guid: 9074e1e96791eb344bb66090a0d4025d, type: 3}
   - {fileID: 8300000, guid: fa67a1a2eaf02734b98e093e07383a16, type: 3}
   music: {fileID: 8300000, guid: 7ecc1ed1a474af34f9a8c42f4138a96c, type: 3}
+  ambient: {fileID: 8300000, guid: 12f6c506f3d334547b4fd2c6bd0580f5, type: 3}
