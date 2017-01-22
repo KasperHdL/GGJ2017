@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Name: ModelCheese
   m_EditorClassIdentifier: 
   cookedMaterial: {fileID: 2100000, guid: 4161d851e31041e41bad8ebb607abc13, type: 2}
+  burntMaterial: {fileID: 2100000, guid: ad608e58e769c8842afcacff9a01cb76, type: 2}
+  firedMaterial: {fileID: 0}

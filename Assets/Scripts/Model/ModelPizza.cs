@@ -9,4 +9,6 @@ public class ModelPizza : ScriptableObject {
     [Header("Changes DO apply")]
     public GameObject[] prefabIngredients;
     public Material cookedMaterial;
+    public Material burntMaterial;
+    public Material firedMaterial;
 }

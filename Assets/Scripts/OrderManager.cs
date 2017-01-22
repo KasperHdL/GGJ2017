@@ -100,7 +100,7 @@ public class OrderManager : MonoBehaviour {
     }
 
     public bool delivered(Pizza pizza){
-        if (!pizza.cooked) return false;
+        if (!pizza.cooked || pizza.burnt) return false;
 
         bool found = false;
         int i = 0;

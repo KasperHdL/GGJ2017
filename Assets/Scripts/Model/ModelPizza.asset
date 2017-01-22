@@ -17,3 +17,5 @@ MonoBehaviour:
   - {fileID: 1074999316672852, guid: 55c629a8bb72a48798ce33e95fe273e2, type: 2}
   - {fileID: 1895517869752914, guid: 1bd39cbc0ee65484e868af9098c82510, type: 2}
   cookedMaterial: {fileID: 2100000, guid: 01051f1fa266246f6bd7201cff32b09d, type: 2}
+  burntMaterial: {fileID: 2100000, guid: 8a9b90b93b1c3624b921b9c9459d5d86, type: 2}
+  firedMaterial: {fileID: 0}

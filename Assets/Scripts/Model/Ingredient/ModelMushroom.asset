@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Name: ModelMushroom
   m_EditorClassIdentifier: 
   cookedMaterial: {fileID: 2100000, guid: 5056684609e7a384a8116ea1fcbffee2, type: 2}
+  burntMaterial: {fileID: 2100000, guid: f93bc48812ccdaa4fa1f1d2a4dccb15e, type: 2}
+  firedMaterial: {fileID: 0}
