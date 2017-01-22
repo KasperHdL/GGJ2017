@@ -11,6 +11,8 @@ public class Pizza : MonoBehaviour {
 	public AudioClip[] ingrdientSounds;
 	//Remember to put ind sounds if you need them
 	public AudioClip[] pizzaPickupSounds;
+	//Remember to put ind sounds if you need them
+	public AudioClip[] throwSounds;
 
     public ModelPizza model;
     public Transform ingredientContainer;
@@ -79,6 +81,17 @@ public class Pizza : MonoBehaviour {
 		}
 	}
 
+	public void thrown(){
+		Debug.Log (this.transform.GetComponent<Rigidbody> ().velocity);
+		if (throwSounds.Length > 0) {
+			int index = Random.Range (0, throwSounds.Length);
+			audioSrc.clip = throwSounds [index];
+			if (!audioSrc.isPlaying) {
+				audioSrc.Play ();
+			}
+		}
+	}
+
     void OnCollisionEnter(Collision coll){
         if (cooked) return;
 
@@ -110,7 +123,7 @@ public class Pizza : MonoBehaviour {
 			ingredientCount [i]++;
 			ingredient.renderer.enabled = false;
 
-		} else if (cooked&&coll.gameObject.name=="Floor") {
+		} else if (cooked&&coll.gameObject.tag=="Floor") {
 			if (missSounds.Length > 0) {
 				int index = Random.Range (0, missSounds.Length);
 				audioSrc.clip = missSounds [index];

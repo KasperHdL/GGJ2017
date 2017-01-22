@@ -282,7 +282,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -367,7 +367,18 @@ MonoBehaviour:
       PublicKeyToken=null
   onDetachFromHand:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114121815737472314}
+        m_MethodName: thrown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   snapAttachEaseInCompleted: 0
@@ -384,32 +395,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missSounds:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 9b1ff9663f723a3499f1aa3e0dae9bcd, type: 3}
+  - {fileID: 8300000, guid: ac4930168906ae749b67cd25ed3fefb7, type: 3}
+  - {fileID: 8300000, guid: ab7f2cc5f77986b479cd44b492059458, type: 3}
+  - {fileID: 8300000, guid: 1f2e32fdd9917984c9997f8fe255c0ab, type: 3}
+  - {fileID: 8300000, guid: bb1c1ed9e0e5b9540ba621b8d17c217d, type: 3}
+  - {fileID: 8300000, guid: 94a0ad899d8c6aa4d91a6f265f014920, type: 3}
+  - {fileID: 8300000, guid: 252757074fbdbcc42977786e478102f6, type: 3}
+  - {fileID: 8300000, guid: 554a896996fc85e4e8880ed5d6bb0b64, type: 3}
+  - {fileID: 8300000, guid: 3e7b361b0f514744e9b98beb3c12dc53, type: 3}
+  - {fileID: 8300000, guid: 919136be0d150d24ebd1400048396a20, type: 3}
   ingrdientSounds:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: baf1646af35eb554b8191df98a9114a1, type: 3}
+  - {fileID: 8300000, guid: 8703fdb427161004ca28fc162d8015c5, type: 3}
+  - {fileID: 8300000, guid: 64ee7f938aade73428e9cbcb23e50e6f, type: 3}
+  - {fileID: 8300000, guid: bf96e46177556f64e9600a795cb98670, type: 3}
+  - {fileID: 8300000, guid: 8932f47525d98794ab2d09291c367de7, type: 3}
+  - {fileID: 8300000, guid: be416ba351111b0428b0bf18da30cf9d, type: 3}
+  - {fileID: 8300000, guid: 4fb6795682a64064a9cc73be764f3735, type: 3}
+  - {fileID: 8300000, guid: 619b11972e625f648b09042f01b68dea, type: 3}
   pizzaPickupSounds:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: dd4e83a5c050d704fa9b350e45cab1de, type: 3}
+  - {fileID: 8300000, guid: c87735cf301993540b092b3804881c9b, type: 3}
+  - {fileID: 8300000, guid: 7f578659b2c8ee143b34eb81c77f38a9, type: 3}
+  - {fileID: 8300000, guid: 26b4c5e2cda21ef4384e2f5090a6823a, type: 3}
+  - {fileID: 8300000, guid: dff7186a81763584d84a565662f53ca0, type: 3}
+  - {fileID: 8300000, guid: c8ad9b0bf6775524db6e25cce35a1130, type: 3}
+  throwSounds:
+  - {fileID: 8300000, guid: 615bd0c2f677293449711e1fe0682a00, type: 3}
+  - {fileID: 8300000, guid: 86260db16b296fd4e871982acf5c12c0, type: 3}
+  - {fileID: 8300000, guid: 2a8715d2b73ccd74b897d48257fcdd47, type: 3}
+  - {fileID: 8300000, guid: 7afb920001527dc46aff07a396ca8ca4, type: 3}
+  - {fileID: 8300000, guid: baf09792240116b4d8a42dc0a7aaf4d9, type: 3}
+  - {fileID: 8300000, guid: a6784f4df72d5994bbd5ddc9c238806e, type: 3}
+  - {fileID: 8300000, guid: ab178dcf5d2251f4e92957dfa83a7789, type: 3}
+  - {fileID: 8300000, guid: 501159e6335b8744a974be37d8d99f59, type: 3}
   model: {fileID: 11400000, guid: 23ac3f5dba3b54ab88be44c49ed9ee11, type: 2}
   ingredientContainer: {fileID: 4884851433746244}
   ingredientCount: 

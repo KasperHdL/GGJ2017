@@ -93,7 +93,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -136,11 +136,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctSounds:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: c87b9287250816e478b941e6d72dcb6f, type: 3}
+  - {fileID: 8300000, guid: 67ed928905db00244b1de4122c2f7e75, type: 3}
+  - {fileID: 8300000, guid: 845b06f0892c1634bb5c3143d0b88cdc, type: 3}
+  - {fileID: 8300000, guid: 1b27a6ceda1031645b9d05069ea8eae3, type: 3}
+  - {fileID: 8300000, guid: 91dbf18c1bca68b48b093d2f35c46838, type: 3}
 --- !u!114 &114929470142752416
 MonoBehaviour:
   m_ObjectHideFlags: 1
