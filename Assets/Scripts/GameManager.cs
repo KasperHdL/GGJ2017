@@ -76,6 +76,8 @@ public class GameManager : MonoBehaviour {
                     roundRunning = false;
                     roundCleared = false;
                     //GAME Lost
+					audioSrc.loop = false;
+					audioSrc.Stop ();
                     orderManager.clear();
                 }
             }
