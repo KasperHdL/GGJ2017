@@ -82,17 +82,39 @@ public class Pizza : MonoBehaviour {
 	}
 
 	public void thrown(){
-        if (throwSounds.Length > 0) {
-			int index = Random.Range (0, throwSounds.Length);
-			audioSrc.clip = throwSounds [index];
-			if (!audioSrc.isPlaying) {
-				audioSrc.Play ();
+		StartCoroutine (isPizzaThrow ());
+	}
+
+	IEnumerator isPizzaThrow(){
+		Vector3 oldPos = this.transform.position;
+		yield return new WaitForSeconds (0.1f);
+		Vector3 newPos = this.transform.position;
+		float dist = Vector3.Distance (oldPos.normalized, newPos.normalized);
+		Debug.Log ("Speed of pizza: " + dist);
+		if (dist > 0.3) {
+			if (throwSounds.Length > 0) {
+				int index = Random.Range (0, throwSounds.Length);
+				audioSrc.clip = throwSounds [index];
+				if (!audioSrc.isPlaying) {
+					audioSrc.Play ();
+				}
 			}
 		}
 	}
 
     void OnCollisionEnter(Collision coll){
-        if (cooked) return;
+
+		if (cooked&&coll.gameObject.tag=="Floor") {
+			if (missSounds.Length > 0) {
+				int index = Random.Range (0, missSounds.Length);
+				audioSrc.clip = missSounds [index];
+				if (!audioSrc.isPlaying) {
+					audioSrc.Play ();
+				}
+			}
+			return;
+		}
+        //if (cooked) return;
 
         if (coll.gameObject.tag == "Ingredient")
         {
@@ -122,15 +144,6 @@ public class Pizza : MonoBehaviour {
 			ingredientCount [i]++;
 			ingredient.renderer.enabled = false;
 
-		} else if (cooked&&coll.gameObject.tag=="Floor") {
-			if (missSounds.Length > 0) {
-				int index = Random.Range (0, missSounds.Length);
-				audioSrc.clip = missSounds [index];
-				if (!audioSrc.isPlaying) {
-					audioSrc.Play ();
-				}
-			}
 		}
-
     }
 }
