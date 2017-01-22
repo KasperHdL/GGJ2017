@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
     public float roundEndTime;
 
     public Text levelText;
+    public Text clockText;
 
     private static GameManager instance;
     private OrderManager orderManager;
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour {
     public void FixedUpdate(){
         if(roundRunning && !roundCleared)
         {
+            clockText.text = Mathf.Round(roundEndTime - Time.time) + "";
             if((orderManager.orders.Count == 0 && numRoundOrdersLeft > 0) || (numRoundOrdersLeft > 0 && nextOrder < Time.time)){
             //make order
 

@@ -111,7 +111,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -136,11 +136,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctSounds:
-  - {fileID: 8300000, guid: 4c2cd269b0f688846bf858443fcbc288, type: 3}
-  - {fileID: 8300000, guid: 8da5abb427d64fe49b4de7e7c1884642, type: 3}
-  - {fileID: 8300000, guid: 1ba36a17fa44df14eab500e175eebde7, type: 3}
-  - {fileID: 8300000, guid: 40d3743e941bed144a0a275c38f6ef8e, type: 3}
-  - {fileID: 8300000, guid: a8b602210983715458d5d8d77c27516e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114929470142752416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,7 +161,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1264396943602260}
   serializedVersion: 5
   lengthInSec: 0.5
-  speed: 1
+  simulationSpeed: 1
   looping: 0
   prewarm: 0
   playOnAwake: 1

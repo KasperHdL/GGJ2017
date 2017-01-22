@@ -15,6 +15,7 @@ public class Order : MonoBehaviour {
     //UI References
     public Text tableNumberText;
     public Image[] ingredientImages;
+    public Image doneImage;
 
 	public void set(int tableNumber, int[] ingredientCount) {
         this.tableNumber = tableNumber;
