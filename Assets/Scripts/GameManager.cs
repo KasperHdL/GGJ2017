@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     public bool gameRunning = false;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour {
     public float roundStartTime;
     public float roundEndTime;
 
+    public Text levelText;
 
     private static GameManager instance;
     private OrderManager orderManager;
@@ -44,6 +46,15 @@ public class GameManager : MonoBehaviour {
     public void Start(){
         orderManager = OrderManager.getInstance();
 
+    }
+
+    public void Update() {
+	if (level == 0) {
+	    levelText.text = "Press bell to begin";
+	}
+	else {
+             levelText.text = "Wave " + level.ToString();
+	}
     }
 
     public void FixedUpdate(){
