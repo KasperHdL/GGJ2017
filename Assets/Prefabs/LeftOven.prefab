@@ -820,7 +820,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -970,9 +970,9 @@ MonoBehaviour:
   _doorClosed: 0
   pizzasInOven: []
   bakeSounds:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 299725f86ce94504894835282955721b, type: 3}
+  - {fileID: 8300000, guid: 2444ff33d0a255048979e9933ecdf729, type: 3}
+  - {fileID: 8300000, guid: ff97c0f0ba4a959429b8e0364731c47a, type: 3}
+  - {fileID: 8300000, guid: 44732ac7ce61f3b4dabe0df678fe9b71, type: 3}
+  - {fileID: 8300000, guid: 5c2ee6c32b4da5147ae1e3598a64e8cc, type: 3}
+  - {fileID: 8300000, guid: 3d3cb887c7193fc4d9b034cfe42ffb77, type: 3}
