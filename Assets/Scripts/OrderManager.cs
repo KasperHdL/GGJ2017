@@ -56,10 +56,10 @@ public class OrderManager : MonoBehaviour {
 
     public void clear(){
         for(int i = orders.Count - 1;i > -1 ; i--){
-            Destroy(orders[i].gameObject,1.5f);
+            Destroy(orders[i].gameObject,1f);
+            setSlotFree(1.5f, i);
             orders[i].setFailed();
             orders.RemoveAt(i);
-            orderSlots[i] = false;
             orderCount = 0;
         }
 
@@ -119,9 +119,9 @@ public class OrderManager : MonoBehaviour {
 
             found = true;
 
-            orderSlots[orders[i].slot] = false;
+            setSlotFree(1.5f, orders[i].slot);
             orders[i].setDone();
-            Destroy(orders[i].gameObject, 1.5f);
+            Destroy(orders[i].gameObject, 1f);
             orders.RemoveAt(i);
             orderCount--;
 
@@ -135,6 +135,13 @@ public class OrderManager : MonoBehaviour {
         }
 
         return found;
+
+    }
+
+    IEnumerator setSlotFree(float seconds, int index){
+        yield return new WaitForSeconds(seconds);
+        orderSlots[index] = false;
+        
 
     }
 
