@@ -15,8 +15,17 @@ public class Oven : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
-		
+	void FixedUpdate () {
+		for(int i = 0;i < pizzasInOven.Count; i++)
+        {
+            pizzasInOven[i].timeInOven += Time.fixedDeltaTime;
+            if (!pizzasInOven[i].cooked && pizzasInOven[i].timeInOven > pizzasInOven[i].ovenTimeNeeded)
+                pizzasInOven[i].cook();
+            else if (!pizzasInOven[i].burnt && pizzasInOven[i].timeInOven > pizzasInOven[i].ovenTimeNeeded * 2)
+                pizzasInOven[i].burn();
+           
+
+        }
 	}
 
     public void doorOpened()
@@ -53,7 +62,11 @@ public class Oven : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (other.tag.Equals ("Pizza")) {
-			pizzasInOven.Add (other.gameObject.GetComponent<Pizza>());
+            Pizza p = other.gameObject.GetComponent<Pizza>();
+
+            pizzasInOven.Add (p);
+            p.smoke.Play();
+            
 		}
 	}
 
@@ -63,6 +76,7 @@ public class Oven : MonoBehaviour {
             Pizza p = other.gameObject.GetComponent<Pizza>();
             if (pizzasInOven.Contains(p))
             {
+                p.smoke.Stop();
                 pizzasInOven.Remove(p);
             }
         }

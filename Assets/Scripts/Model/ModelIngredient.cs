@@ -6,5 +6,7 @@ using UnityEngine;
 public class ModelIngredient : ScriptableObject {
     [Header("Changes DO apply")]
     public Material cookedMaterial;
+    public Material burntMaterial;
+    public Material firedMaterial;
 }
 

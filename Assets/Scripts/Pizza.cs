@@ -16,6 +16,14 @@ public class Pizza : MonoBehaviour {
     public Transform ingredientContainer;
     public int[] ingredientCount;
 	public bool cooked = false;
+    public bool burnt = false;
+    public bool fired = false;
+
+    public ParticleSystem smoke;
+
+    public float timeInOven = 0f;
+    public float ovenTimeNeeded = 5f;
+
     public Renderer renderer;
     public Valve.VR.InteractionSystem.Interactable interactable;
 
@@ -39,11 +47,25 @@ public class Pizza : MonoBehaviour {
             Ingredient i = child.GetComponent<Ingredient>();
             i.renderer.material = i.model.cookedMaterial;
 		}
+        smoke.emissionRate = 25;
 
         renderer.material = model.cookedMaterial;
 	}
 
-	void OnDestroy() {
+    public void burn()
+    {
+        burnt = true;
+        foreach (GameObject child in dummyIngredients)
+        {
+            Ingredient i = child.GetComponent<Ingredient>();
+            i.renderer.material = i.model.burntMaterial;
+        }
+        smoke.emissionRate = 100f;
+
+        renderer.material = model.burntMaterial;
+    }
+
+    void OnDestroy() {
 		//GameObject soundObject = 
 	}
 

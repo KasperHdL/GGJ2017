@@ -16,6 +16,8 @@ namespace Valve.VR.InteractionSystem
     public class CircularDrive : MonoBehaviour
     {
 
+        public float currentAngleStep = 0f;
+        public float angleStep = 5f;
         public bool buttonReleased = true;
         public Oven oven;
         public float snapZone = 5f;
@@ -247,7 +249,8 @@ namespace Valve.VR.InteractionSystem
 				// Trigger was just pressed
 				lastHandProjected = ComputeToTransformProjected( hand.hoverSphereTransform );
 
-				if ( hoverLock )
+                StartCoroutine(HapticPulses(hand.controller, 2.0f, 15));
+                if ( hoverLock )
 				{
 					hand.HoverLock( GetComponent<Interactable>() );
 					handHoverLocked = hand;
@@ -264,19 +267,25 @@ namespace Valve.VR.InteractionSystem
 			}
 			else if ( hand.GetStandardInteractionButtonUp() )
 			{
-				// Trigger was just released
-				if ( hoverLock )
-				{
-					hand.HoverUnlock( GetComponent<Interactable>() );
-					handHoverLocked = null;
-                    buttonReleased = true;
-				}
-			}
+                // Trigger was just released   
+                StartCoroutine(HapticPulses(hand.controller, 2.0f, 15));
+            }
 			else if ( driving && hand.GetStandardInteractionButton() && hand.hoveringInteractable == GetComponent<Interactable>() )
-			{
-				ComputeAngle( hand );
+            {
+                ComputeAngle( hand );
 				UpdateAll();
-			}
+            }else
+            {
+                driving = false;
+
+                // Trigger was just released
+                if (hoverLock)
+                {
+                    hand.HoverUnlock(GetComponent<Interactable>());
+                    handHoverLocked = null;
+                    buttonReleased = true;
+                }
+            }
 		}
 
 
@@ -407,21 +416,22 @@ namespace Valve.VR.InteractionSystem
                 velocity += gravity;
                 outAngle += velocity;
 
-                outAngle = Mathf.Clamp(outAngle, minAngle, maxAngle);
                 if (outAngle == maxAngle)
                 {
                     onMaxAngle.Invoke();
                     velocity = 0;
                 }
 
-                UpdateGameObject();
             }
+            outAngle = Mathf.Clamp(outAngle, minAngle, maxAngle);
+            UpdateGameObject();
+
         }
 
-		//-------------------------------------------------
-		// Updates the LinearMapping value from the angle
-		//-------------------------------------------------
-		private void UpdateGameObject()
+        //-------------------------------------------------
+        // Updates the LinearMapping value from the angle
+        //-------------------------------------------------
+        private void UpdateGameObject()
 		{
             
             if ( rotateGameObject )
@@ -500,66 +510,79 @@ namespace Valve.VR.InteractionSystem
 
 						float signedAngleDelta = absAngleDelta;
 
-						if ( dot < 0.0f )
+						if (dot < 0.0f)
 						{
 							signedAngleDelta = -signedAngleDelta;
 						}
-						if ( limited )
+
+						float angleTmp = Mathf.Clamp( outAngle + signedAngleDelta, minAngle, maxAngle );
+                        //outAngle = angleTmp;
+
+						if ( outAngle == minAngle )
 						{
-							float angleTmp = Mathf.Clamp( outAngle + signedAngleDelta, minAngle, maxAngle );
-                            
-							if ( outAngle == minAngle )
-							{
-								if ( angleTmp > minAngle && absAngleDelta < minMaxAngularThreshold )
-								{
-									outAngle = angleTmp;
-									lastHandProjected = toHandProjected;
-								}
-							}
-							else if ( outAngle == maxAngle )
-							{
-								if ( angleTmp < maxAngle && absAngleDelta < minMaxAngularThreshold )
-								{
-									outAngle = angleTmp;
-									lastHandProjected = toHandProjected;
-								}
-							}
-							else if ( angleTmp == minAngle )
+							if ( angleTmp > minAngle && absAngleDelta < minMaxAngularThreshold )
 							{
 								outAngle = angleTmp;
 								lastHandProjected = toHandProjected;
-								onMinAngle.Invoke();
-								if ( freezeOnMin )
-								{
-									Freeze( hand );
-								}
 							}
-							else if ( angleTmp == maxAngle )
+						}
+						else if ( outAngle == maxAngle )
+						{
+							if ( angleTmp < maxAngle && absAngleDelta < minMaxAngularThreshold )
 							{
 								outAngle = angleTmp;
 								lastHandProjected = toHandProjected;
                                 onMaxAngle.Invoke();
 
-                                if ( freezeOnMax )
-								{
-									Freeze( hand );
-								}
-							}
-							else
+                            }
+                        }
+						else if ( angleTmp == minAngle )
+						{
+							outAngle = angleTmp;
+							lastHandProjected = toHandProjected;
+							onMinAngle.Invoke();
+							if ( freezeOnMin )
 							{
-								outAngle = angleTmp;
-								lastHandProjected = toHandProjected;
+								Freeze( hand );
 							}
-
-                            currentlyClosed = angleTmp == maxAngle;
 						}
+						else if ( angleTmp == maxAngle )
+						{
+							outAngle = angleTmp;
+							lastHandProjected = toHandProjected;
+                            onMaxAngle.Invoke();
+
+                            if ( freezeOnMax )
+							{
+								Freeze( hand );
+							}
+						}
+						else
+						{
+							outAngle = angleTmp;
+							lastHandProjected = toHandProjected;
+						}
+
+                        float delta = outAngle - currentAngleStep;
+                        if (Mathf.Abs(delta) > angleStep)
+                        {
+                            currentAngleStep = outAngle;
+                            StartCoroutine(HapticPulses(hand.controller, .5f, 5));
+
+                        }
+
+
+                        currentlyClosed = angleTmp == maxAngle;
+						/*
 						else
 						{
 							outAngle += signedAngleDelta;
 							lastHandProjected = toHandProjected;
 						}
+                        */
+                        
 
-                        if(oven._doorClosed && !currentlyClosed)
+                        if (oven._doorClosed && !currentlyClosed)
                         {
                             oven.doorOpened();
 

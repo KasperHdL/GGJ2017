@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Name: ModelSalami
   m_EditorClassIdentifier: 
   cookedMaterial: {fileID: 2100000, guid: ce0d2b43bc64c214b87044c2f84ca70d, type: 2}
+  burntMaterial: {fileID: 2100000, guid: 909bfc9dad779be44a0cea3ed84a9e74, type: 2}
+  firedMaterial: {fileID: 0}
