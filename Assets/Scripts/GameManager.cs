@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
 
     public Text levelText;
     public Text clockText;
+    public Text clockText2;
 
     private static GameManager instance;
     private OrderManager orderManager;
@@ -68,7 +69,8 @@ public class GameManager : MonoBehaviour {
         if(roundRunning && !roundCleared)
         {
             clockText.text = Mathf.Round(roundEndTime - Time.time) + "";
-            if((orderManager.orders.Count == 0 && numRoundOrdersLeft > 0) || (numRoundOrdersLeft > 0 && nextOrder < Time.time)){
+            clockText2.text = clockText.text;
+            if ((orderManager.orders.Count == 0 && numRoundOrdersLeft > 0) || (numRoundOrdersLeft > 0 && nextOrder < Time.time)){
             //make order
 
                 orderManager.newOrder(1);
@@ -109,6 +111,8 @@ public class GameManager : MonoBehaviour {
     }
 
     public void startGame(){
+        audioSrc.Stop();
+        StartCoroutine(fadeIn(music));
 
         if (roundCleared) {
             newRound();
@@ -122,8 +126,6 @@ public class GameManager : MonoBehaviour {
         level = 0;
 
         newRound();
-		StartCoroutine (fadeIn (music));
-
         orderManager.clear();
     }
 

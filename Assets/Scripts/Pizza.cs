@@ -90,8 +90,7 @@ public class Pizza : MonoBehaviour {
 		yield return new WaitForSeconds (0.1f);
 		Vector3 newPos = this.transform.position;
 		float dist = Vector3.Distance (oldPos.normalized, newPos.normalized);
-		Debug.Log ("Speed of pizza: " + dist);
-		if (dist > 0.3) {
+		if (dist > 0.1f) {
 			if (throwSounds.Length > 0) {
 				int index = Random.Range (0, throwSounds.Length);
 				audioSrc.clip = throwSounds [index];
@@ -103,18 +102,7 @@ public class Pizza : MonoBehaviour {
 	}
 
     void OnCollisionEnter(Collision coll){
-
-		if (cooked&&coll.gameObject.tag=="Floor") {
-			if (missSounds.Length > 0) {
-				int index = Random.Range (0, missSounds.Length);
-				audioSrc.clip = missSounds [index];
-				if (!audioSrc.isPlaying) {
-					audioSrc.Play ();
-				}
-			}
-			return;
-		}
-        //if (cooked) return;
+        if (cooked) return;
 
         if (coll.gameObject.tag == "Ingredient")
         {
