@@ -57,7 +57,7 @@ public class OrderManager : MonoBehaviour {
     public void clear(){
         for(int i = orders.Count - 1;i > -1 ; i--){
             Destroy(orders[i].gameObject,1f);
-            setSlotFree(1.5f, i);
+            StartCoroutine(setSlotFree(1.5f, i));
             orders[i].setFailed();
             orders.RemoveAt(i);
             orderCount = 0;
@@ -119,7 +119,7 @@ public class OrderManager : MonoBehaviour {
 
             found = true;
 
-            setSlotFree(1.5f, orders[i].slot);
+            StartCoroutine(setSlotFree(1.5f, orders[i].slot));
             orders[i].setDone();
             Destroy(orders[i].gameObject, 1f);
             orders.RemoveAt(i);

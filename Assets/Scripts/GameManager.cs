@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour {
         gameRunning = true;
         roundRunning = true;
         roundCleared = false;
-         level = 0;
+        level = 0;
 
         newRound();
 		StartCoroutine (fadeIn ());

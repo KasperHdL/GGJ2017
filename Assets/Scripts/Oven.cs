@@ -20,12 +20,34 @@ public class Oven : MonoBehaviour {
         {
             pizzasInOven[i].timeInOven += Time.fixedDeltaTime;
             if (!pizzasInOven[i].cooked && pizzasInOven[i].timeInOven > pizzasInOven[i].ovenTimeNeeded)
+            {
                 pizzasInOven[i].cook();
+                if (bakeSounds.Length > 0)
+                {
+                    int index = Random.Range(0, bakeSounds.Length);
+                    audioSrc.clip = bakeSounds[index];
+                    if (!audioSrc.isPlaying)
+                    {
+                        audioSrc.Play();
+                    }
+                }
+            }
             else if (!pizzasInOven[i].burnt && pizzasInOven[i].timeInOven > pizzasInOven[i].ovenTimeNeeded * 2)
+            { 
                 pizzasInOven[i].burn();
-           
+                if (bakeSounds.Length > 0)
+                {
+                    int index = Random.Range(0, bakeSounds.Length);
+                    audioSrc.clip = bakeSounds[index];
+                    if (!audioSrc.isPlaying)
+                    {
+                        audioSrc.Play();
+                    }
+                }
+            }
 
-        }
+
+    }
 	}
 
     public void doorOpened()

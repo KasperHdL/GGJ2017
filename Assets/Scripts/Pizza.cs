@@ -82,8 +82,7 @@ public class Pizza : MonoBehaviour {
 	}
 
 	public void thrown(){
-		Debug.Log (this.transform.GetComponent<Rigidbody> ().velocity);
-		if (throwSounds.Length > 0) {
+        if (throwSounds.Length > 0) {
 			int index = Random.Range (0, throwSounds.Length);
 			audioSrc.clip = throwSounds [index];
 			if (!audioSrc.isPlaying) {

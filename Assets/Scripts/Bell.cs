@@ -6,8 +6,9 @@ using UnityEngine.Events;
 public class Bell : MonoBehaviour {
 
     [HideInInspector] public GameManager gameManager;
+    [HideInInspector] public ScoreManager scoreManager;
 
-	private AudioSource audioSrc;
+    private AudioSource audioSrc;
 	//Remember to put ind sounds if you need them
 	public AudioClip[] bellSounds;
 
@@ -17,17 +18,16 @@ public class Bell : MonoBehaviour {
 	public AudioClip[] endSounds;
 	public AudioClip[] altSounds;
 
-	private int round;
 
     public void Start(){
         gameManager = GameManager.getInstance();
+        scoreManager = ScoreManager.getInstance();
 		audioSrc = GetComponent<AudioSource>();
-		round = 0;
     }
 
 	IEnumerator roundSound(){
 		yield return new WaitForSeconds (audioSrc.clip.length);
-		if (round < 8) {
+		if (gameManager.level < 8) {
 			if (startSounds.Length > 0) {
 				int index = Random.Range (0, startSounds.Length);
 				audioSrc.clip = startSounds [index];
@@ -38,7 +38,7 @@ public class Bell : MonoBehaviour {
 			}
 			if (Random.Range (0, 2) == 0) {
 				if (carlRoundSounds.Length > 0) {
-					audioSrc.clip = carlRoundSounds [round-1];
+					audioSrc.clip = carlRoundSounds [gameManager.level - 1];
 					if (!audioSrc.isPlaying) {
 						audioSrc.Play ();
 						yield return new WaitForSeconds (audioSrc.clip.length);
@@ -46,7 +46,7 @@ public class Bell : MonoBehaviour {
 				}
 			} else {
 				if (jonasRoundSounds.Length > 0) {
-					audioSrc.clip = jonasRoundSounds [round-1];
+					audioSrc.clip = jonasRoundSounds [gameManager.level - 1];
 					if (!audioSrc.isPlaying) {
 						audioSrc.Play ();
 						yield return new WaitForSeconds (audioSrc.clip.length);
@@ -81,8 +81,8 @@ public class Bell : MonoBehaviour {
 
     private void OnHandHoverBegin(Valve.VR.InteractionSystem.Hand hand)
     {
-        round++;
         gameManager.startGame();
+        scoreManager.score = 0;
         if (bellSounds.Length > 0)
         {
             int index = Random.Range(0, bellSounds.Length);
