@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
 
     private static GameManager instance;
     private OrderManager orderManager;
+    private ScoreManager scoreManager;
 
 	private AudioSource audioSrc;
 	//Remember to put ind sounds if you need them
@@ -46,16 +47,16 @@ public class GameManager : MonoBehaviour {
 
     public void Start(){
         orderManager = OrderManager.getInstance();
-
+        scoreManager = ScoreManager.getInstance();
     }
 
     public void Update() {
-	if (level == 0) {
-	    levelText.text = "Hit bell to begin";
-	}
-	else {
-             levelText.text = "Wave " + level.ToString();
-	}
+	    if (level == 0) {
+	        levelText.text = "Hit bell to begin";
+	    }
+	    else {
+                levelText.text = "Wave " + level.ToString();
+        }
     }
 
     public void FixedUpdate(){
@@ -98,13 +99,16 @@ public class GameManager : MonoBehaviour {
     }
 
     public void startGame(){
-        if (roundCleared && ((orderManager.orders.Count == 0 && numRoundOrdersLeft > 0) || (numRoundOrdersLeft > 0 && nextOrder < Time.time))) {
+
+        if (roundCleared) {
             newRound();
             return;
         }
+
         gameRunning = true;
         roundRunning = true;
         roundCleared = false;
+        scoreManager.score = 0;
         level = 0;
 
         newRound();
@@ -126,7 +130,6 @@ public class GameManager : MonoBehaviour {
 	}
 
     public void newRound(){
-        if(!gameRunning || !roundRunning) startGame();
         level++;
         roundRunning = true;
         roundCleared = false;

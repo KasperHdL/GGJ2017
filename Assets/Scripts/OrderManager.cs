@@ -87,6 +87,7 @@ public class OrderManager : MonoBehaviour {
         GameObject g = Instantiate(prefabOrder, orderOrigin.transform.position + orderOffset * orderIndex, Quaternion.identity) as GameObject;
         Order o = g.GetComponent<Order>();
 
+        o.difficulty = difficulty;
         int[] ingredientCount = new int[ingredientTypes.Length];
 
         for(int i = 0; i < ingredientCount.Length; i++){
@@ -101,6 +102,8 @@ public class OrderManager : MonoBehaviour {
     }
 
     public bool delivered(Pizza pizza){
+        int difficulty = 1;
+
         if (!pizza.cooked || pizza.burnt) return false;
 
         bool found = false;
@@ -119,6 +122,8 @@ public class OrderManager : MonoBehaviour {
 
             found = true;
 
+            difficulty = orders[i].difficulty;
+
             StartCoroutine(setSlotFree(1.5f, orders[i].slot));
             orders[i].setDone();
             Destroy(orders[i].gameObject, 1f);
@@ -129,7 +134,7 @@ public class OrderManager : MonoBehaviour {
         }
 
         if(found){
-            scoreManager.score++;
+            scoreManager.score += difficulty;
         }else{
 
         }

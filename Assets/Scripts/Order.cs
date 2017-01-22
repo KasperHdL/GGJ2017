@@ -11,6 +11,7 @@ public class Order : MonoBehaviour {
     public int slot;
     public int tableNumber;
     public int[] ingredientCount;
+    public int difficulty;
 
     //UI References
     public Text tableNumberText;
