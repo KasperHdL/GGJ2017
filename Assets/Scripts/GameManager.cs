@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
 	//Remember to put ind sounds if you need them
 	public AudioClip[] endRoundSounds;
 	public AudioClip music;
+    public AudioClip ambient;
 
     public void Awake(){
         if(instance != null)
@@ -46,6 +47,9 @@ public class GameManager : MonoBehaviour {
 
     public void Start(){
         orderManager = OrderManager.getInstance();
+        audioSrc.clip = ambient;
+        audioSrc.loop = true;
+        audioSrc.Play();
 
     }
 
@@ -95,6 +99,11 @@ public class GameManager : MonoBehaviour {
                 }
             }
         }
+        if(!audioSrc.isPlaying && !roundRunning) {
+            audioSrc.clip = ambient;
+            audioSrc.loop = true;
+            audioSrc.Play();
+        } 
     }
 
     public void startGame(){
@@ -108,13 +117,13 @@ public class GameManager : MonoBehaviour {
         level = 0;
 
         newRound();
-		StartCoroutine (fadeIn ());
+		StartCoroutine (fadeIn (music));
 
         orderManager.clear();
     }
 
-	IEnumerator fadeIn(){
-		audioSrc.clip = music;
+	IEnumerator fadeIn(AudioClip clip){
+		audioSrc.clip = clip;
 		audioSrc.loop = true;
 		audioSrc.volume = 0;
 		audioSrc.Play ();
