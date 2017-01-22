@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  scoreText: {fileID: 0}
 --- !u!114 &114620582997581754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,3 +89,105 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc99e60f9fe8b4e11b10eb2569f83f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameRunning: 0
+  roundRunning: 0
+  roundCleared: 0
+  numOrderPerLevelMultiplier:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: -0.041066498
+      value: 3.0142944
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    - serializedVersion: 2
+      time: 10
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    - serializedVersion: 2
+      time: 99.52752
+      value: 1.3032471
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  timeBetweenOrderMultiplier:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 1
+      value: 45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    - serializedVersion: 2
+      time: 1.9879043
+      value: 30.027523
+      inSlope: -3.9591832
+      outSlope: -3.9591832
+      tangentMode: 136
+    - serializedVersion: 2
+      time: 3.0061123
+      value: 28.041882
+      inSlope: -1.3099651
+      outSlope: -1.3099651
+      tangentMode: 136
+    - serializedVersion: 2
+      time: 5.0105033
+      value: 26.068024
+      inSlope: -0.43321782
+      outSlope: -0.43321782
+      tangentMode: 136
+    - serializedVersion: 2
+      time: 21.231197
+      value: 17.363997
+      inSlope: -0.32539013
+      outSlope: -0.32539013
+      tangentMode: 136
+    - serializedVersion: 2
+      time: 51.04871
+      value: 11.087645
+      inSlope: -0.12783432
+      outSlope: -0.12783432
+      tangentMode: 136
+    - serializedVersion: 2
+      time: 101.079056
+      value: 7.1567
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  roundBufferTimeMultiplier:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 1
+      value: 29.857409
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    - serializedVersion: 2
+      time: 30.119587
+      value: 10.144399
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  startDelay: 2
+  level: 0
+  nextOrder: 0
+  numRoundOrdersLeft: 0
+  timeBetweenOrders: 0
+  roundBufferTime: 0
+  roundStartTime: 0
+  roundEndTime: 0
+  levelText: {fileID: 0}
