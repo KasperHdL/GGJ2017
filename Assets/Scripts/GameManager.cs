@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour {
         audioSrc.Stop();
         StartCoroutine(fadeIn(music));
 
-        if (roundCleared) {
+        if (gameRunning && roundCleared) {
             newRound();
             return;
         }
