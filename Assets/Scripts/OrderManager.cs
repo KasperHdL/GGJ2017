@@ -57,7 +57,7 @@ public class OrderManager : MonoBehaviour {
     public void clear(){
         for(int i = orders.Count - 1;i > -1 ; i--){
             Destroy(orders[i].gameObject,1f);
-            StartCoroutine(setSlotFree(1.5f, i));
+            StartCoroutine(setSlotFree(1f, orders[i].slot));
             orders[i].setFailed();
             orders.RemoveAt(i);
             orderCount = 0;
@@ -66,7 +66,7 @@ public class OrderManager : MonoBehaviour {
     }
 
     //difficulty is how many rows will be generated
-    public void newOrder(int difficulty){
+    public int newOrder(int difficulty){
         if(difficulty <= 0 || difficulty >= 4){
             Debug.Log("Difficulty must be above 0");
         }
@@ -81,7 +81,7 @@ public class OrderManager : MonoBehaviour {
         }
         if(orderIndex == -1){
             Debug.LogWarning("Max number of orders reached");
-            return;
+            return -1;
         }
 
         GameObject g = Instantiate(prefabOrder, orderOrigin.transform.position + orderOffset * orderIndex, Quaternion.identity) as GameObject;
@@ -99,6 +99,7 @@ public class OrderManager : MonoBehaviour {
         o.id = orderCount++;
 
         orders.Add(o);
+        return orderIndex;
     }
 
     public bool delivered(Pizza pizza){
@@ -145,8 +146,8 @@ public class OrderManager : MonoBehaviour {
 
     IEnumerator setSlotFree(float seconds, int index){
         yield return new WaitForSeconds(seconds);
+        Debug.Log("falsing " + index);
         orderSlots[index] = false;
-        
 
     }
 

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     public bool roundRunning = false;
     public bool roundCleared = false;
 
-    public AnimationCurve numOrderPerLevelMultiplier;
+    public AnimationCurve numOrderPerLevel;
     public AnimationCurve timeBetweenOrderMultiplier;
     public AnimationCurve roundBufferTimeMultiplier;
     public float startDelay = 2f;
@@ -66,41 +66,42 @@ public class GameManager : MonoBehaviour {
     }
 
     public void FixedUpdate(){
-        if(roundRunning && !roundCleared)
+        if(gameRunning && roundRunning && !roundCleared)
         {
             clockText.text = Mathf.Round(roundEndTime - Time.time) + "";
             clockText2.text = clockText.text;
+
             if ((orderManager.orders.Count == 0 && numRoundOrdersLeft > 0) || (numRoundOrdersLeft > 0 && nextOrder < Time.time)){
-            //make order
+                //make order
 
-                orderManager.newOrder(1);
-                nextOrder += timeBetweenOrders;
-
-                numRoundOrdersLeft--;
+                int index = orderManager.newOrder(1);
+                if(index != -1){
+                    nextOrder += timeBetweenOrders;
+                    numRoundOrdersLeft--;
+                }
             }
 
-            if((orderManager.orders.Count == 0 && numRoundOrdersLeft == 0) || roundEndTime < Time.time){
-                if(orderManager.orders.Count == 0 && numRoundOrdersLeft == 0){
-                    roundRunning = false;
-                    roundCleared = true;
-					if (endRoundSounds.Length > 0) {
-						audioSrc.Stop ();
-						audioSrc.loop = false;
-						int index = Random.Range (0, endRoundSounds.Length);
-						audioSrc.clip = endRoundSounds [index];
-						if (!audioSrc.isPlaying) {
-							audioSrc.Play ();
-						}
-					}
-                }else{
-                    gameRunning = false;
-                    roundRunning = false;
-                    roundCleared = false;
-                    //GAME Lost
-					audioSrc.loop = false;
-					audioSrc.Stop ();
-                    orderManager.clear();
+            if(orderManager.orders.Count == 0 && numRoundOrdersLeft == 0){
+                roundRunning = false;
+                roundCleared = true;
+                if (endRoundSounds.Length > 0) {
+                    audioSrc.Stop ();
+                    audioSrc.loop = false;
+                    int index = Random.Range (0, endRoundSounds.Length);
+                    audioSrc.clip = endRoundSounds [index];
+                    if (!audioSrc.isPlaying) {
+                        audioSrc.Play ();
+                    }
                 }
+            }
+            if(roundEndTime < Time.time){
+                gameRunning = false;
+                roundRunning = false;
+                roundCleared = false;
+                //GAME Lost
+                audioSrc.loop = false;
+                audioSrc.Stop ();
+                orderManager.clear();
             }
         }
         if(!audioSrc.isPlaying && !roundRunning) {
@@ -146,7 +147,7 @@ public class GameManager : MonoBehaviour {
         roundRunning = true;
         roundCleared = false;
 
-        numRoundOrdersLeft = Mathf.RoundToInt(level * numOrderPerLevelMultiplier.Evaluate(level));
+        numRoundOrdersLeft = Mathf.RoundToInt(numOrderPerLevel.Evaluate(level));
         timeBetweenOrders = (1f/level) * timeBetweenOrderMultiplier.Evaluate(level); 
         roundStartTime = Time.time;
         roundBufferTime = (1f/level) * roundBufferTimeMultiplier.Evaluate(level);
@@ -155,3 +156,4 @@ public class GameManager : MonoBehaviour {
 
     }
 }
+
