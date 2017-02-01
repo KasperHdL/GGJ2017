@@ -32,7 +32,7 @@ public class Oven : MonoBehaviour {
                     }
                 }
             }
-            else if (!pizzasInOven[i].burnt && pizzasInOven[i].timeInOven > pizzasInOven[i].ovenTimeNeeded * 2)
+            else if (!pizzasInOven[i].burnt && pizzasInOven[i].timeInOven > pizzasInOven[i].burnTimeNeeded)
             { 
                 pizzasInOven[i].burn();
                 if (bakeSounds.Length > 0)

@@ -8,9 +8,9 @@ public class GameManager : MonoBehaviour {
     public bool roundRunning = false;
     public bool roundCleared = false;
 
-    public AnimationCurve numOrderPerLevel;
-    public AnimationCurve timeBetweenOrderMultiplier;
-    public AnimationCurve roundBufferTimeMultiplier;
+    public AnimationCurve numOrderPerLevelCurve;
+    public AnimationCurve timeBetweenOrderCurve;
+    public AnimationCurve roundBufferTimeCurve;
     public float startDelay = 2f;
 
     [Header("Running variables")]
@@ -147,10 +147,10 @@ public class GameManager : MonoBehaviour {
         roundRunning = true;
         roundCleared = false;
 
-        numRoundOrdersLeft = Mathf.RoundToInt(numOrderPerLevel.Evaluate(level));
-        timeBetweenOrders = (1f/level) * timeBetweenOrderMultiplier.Evaluate(level); 
+        numRoundOrdersLeft = Mathf.RoundToInt(numOrderPerLevelCurve.Evaluate(level));
+        timeBetweenOrders = timeBetweenOrderCurve.Evaluate(level); 
         roundStartTime = Time.time;
-        roundBufferTime = (1f/level) * roundBufferTimeMultiplier.Evaluate(level);
+        roundBufferTime = roundBufferTimeCurve.Evaluate(level);
         roundEndTime = roundStartTime + (numRoundOrdersLeft * timeBetweenOrders) + roundBufferTime + startDelay;
         nextOrder = roundStartTime + startDelay;
 

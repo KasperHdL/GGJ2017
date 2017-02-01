@@ -25,6 +25,7 @@ public class Pizza : MonoBehaviour {
 
     public float timeInOven = 0f;
     public float ovenTimeNeeded = 5f;
+    public float burnTimeNeeded = 15f;
 
     public Renderer renderer;
     public Valve.VR.InteractionSystem.Interactable interactable;
