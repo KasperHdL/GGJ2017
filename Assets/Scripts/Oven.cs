@@ -54,7 +54,7 @@ public class Oven : MonoBehaviour {
         _doorClosed = false;
         for (int i = 0; i < pizzasInOven.Count; i++)
         {
-            pizzasInOven[i].interactable.disable = false;
+            pizzasInOven[i].interactable.enabled = true;
         }
     }
 	public void doorClosed(){
@@ -63,7 +63,7 @@ public class Oven : MonoBehaviour {
 			int index = Random.Range (0, bakeSounds.Length);
 			audioSrc.clip = bakeSounds [index];
 			if (!audioSrc.isPlaying) {
-				audioSrc.Play ();
+				audioSrc.Play ();   
 			}
 		}
 		foreach (Pizza pizza in pizzasInOven) {
@@ -76,7 +76,7 @@ public class Oven : MonoBehaviour {
             else
             {
                 pizzasInOven[i].GetComponent<Pizza>().cook();
-                pizzasInOven[i].interactable.disable = true;
+                pizzasInOven[i].interactable.enabled = false;
             }
         }
 	}
