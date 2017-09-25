@@ -76,23 +76,20 @@ public class Bell : MonoBehaviour {
 
     private void HandHoverUpdate(Valve.VR.InteractionSystem.Hand hand)
     {
-
-    }
-
-    private void OnHandHoverBegin(Valve.VR.InteractionSystem.Hand hand)
-    {
-        gameManager.startGame();
+		if (hand.GetStandardInteractionButtonDown())
+		{
+			gameManager.startGame();
    
-        if (bellSounds.Length > 0)
-        {
-            int index = Random.Range(0, bellSounds.Length);
-            audioSrc.clip = bellSounds[index];
-            if (!audioSrc.isPlaying)
-            {
-                audioSrc.Play();
-                StartCoroutine(roundSound());
-            }
-        }
-
+			if (bellSounds.Length > 0)
+			{
+				int index = Random.Range(0, bellSounds.Length);
+				audioSrc.clip = bellSounds[index];
+				if (!audioSrc.isPlaying)
+				{
+					audioSrc.Play();
+					StartCoroutine(roundSound());
+				}
+			}
+		}
     }
 }

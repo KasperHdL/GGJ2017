@@ -29,6 +29,8 @@ public class Respawnable : MonoBehaviour {
 		{
 			transform.position = originPosition;
 			transform.rotation = originRotation;
+			floorTimer = 0;
+			onFloor = false;
 		}
 	}
 

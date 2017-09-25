@@ -19,8 +19,8 @@ namespace Valve.VR.InteractionSystem
 
         private void HandHoverUpdate(Hand hand)
         {
-            //Trigger got pressed
-            if (hand.GetStandardInteractionButtonDown())
+            //Trigger is pressed
+            if (hand.GetStandardInteractionButton())
             {
                 Transform attachPoint = hand.transform;
                 GameObject g;
