@@ -13,7 +13,6 @@ namespace Valve.VR.InteractionSystem
 	//-------------------------------------------------------------------------
 	public class Interactable : MonoBehaviour
 	{
-        public bool disable = false;
 		public delegate void OnAttachedToHandDelegate( Hand hand );
 		public delegate void OnDetachedFromHandDelegate( Hand hand );
 
@@ -25,7 +24,6 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void OnAttachedToHand( Hand hand )
 		{
-            if (disable) return;
 			if ( onAttachedToHand != null )
 			{
 				onAttachedToHand.Invoke( hand );
@@ -35,9 +33,8 @@ namespace Valve.VR.InteractionSystem
 
 		//-------------------------------------------------
 		private void OnDetachedFromHand( Hand hand )
-        {
-            if (disable) return;
-            if ( onDetachedFromHand != null )
+		{
+			if ( onDetachedFromHand != null )
 			{
 				onDetachedFromHand.Invoke( hand );
 			}

@@ -11,21 +11,10 @@ using System.Collections;
 namespace Valve.VR.InteractionSystem
 {
 
-    //-------------------------------------------------------------------------
-    [RequireComponent(typeof(Interactable))]
-    public class CircularDrive : MonoBehaviour
-    {
-
-        public float currentAngleStep = 0f;
-        public float angleStep = 5f;
-        public bool buttonReleased = true;
-        public Oven oven;
-        public float snapZone = 5f;
-        public float gravity;
-        private float velocity;
-        
-
-        public bool currentlyClosed = false;
+	//-------------------------------------------------------------------------
+	[RequireComponent( typeof( Interactable ) )]
+	public class CircularDrive : MonoBehaviour
+	{
 		public enum Axis_t
 		{
 			XAxis,
@@ -220,7 +209,7 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void OnHandHoverBegin( Hand hand )
 		{
-			//ControllerButtonHints.ShowButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
+			ControllerButtonHints.ShowButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
 		}
 
 
@@ -242,23 +231,18 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void HandHoverUpdate( Hand hand )
 		{
-           // buttonHeld = hand.GetStandardInteractionButton();
-
-            if ( hand.GetStandardInteractionButtonDown() )
+			if ( hand.GetStandardInteractionButtonDown() )
 			{
 				// Trigger was just pressed
 				lastHandProjected = ComputeToTransformProjected( hand.hoverSphereTransform );
 
-                StartCoroutine(HapticPulses(hand.controller, 2.0f, 15));
-                if ( hoverLock )
+				if ( hoverLock )
 				{
 					hand.HoverLock( GetComponent<Interactable>() );
 					handHoverLocked = hand;
-
 				}
-                buttonReleased = true;
 
-                driving = true;
+				driving = true;
 
 				ComputeAngle( hand );
 				UpdateAll();
@@ -267,25 +251,18 @@ namespace Valve.VR.InteractionSystem
 			}
 			else if ( hand.GetStandardInteractionButtonUp() )
 			{
-                // Trigger was just released   
-                StartCoroutine(HapticPulses(hand.controller, 2.0f, 15));
-            }
+				// Trigger was just released
+				if ( hoverLock )
+				{
+					hand.HoverUnlock( GetComponent<Interactable>() );
+					handHoverLocked = null;
+				}
+			}
 			else if ( driving && hand.GetStandardInteractionButton() && hand.hoveringInteractable == GetComponent<Interactable>() )
-            {
-                ComputeAngle( hand );
+			{
+				ComputeAngle( hand );
 				UpdateAll();
-            }else
-            {
-                driving = false;
-
-                // Trigger was just released
-                if (hoverLock)
-                {
-                    hand.HoverUnlock(GetComponent<Interactable>());
-                    handHoverLocked = null;
-                    buttonReleased = true;
-                }
-            }
+			}
 		}
 
 
@@ -409,32 +386,13 @@ namespace Valve.VR.InteractionSystem
 			UpdateDebugText();
 		}
 
-        void FixedUpdate()
-        {
-            if (!driving && outAngle != maxAngle)
-            {
-                velocity += gravity;
-                outAngle += velocity;
 
-                if (outAngle == maxAngle)
-                {
-                    onMaxAngle.Invoke();
-                    velocity = 0;
-                }
-
-            }
-            outAngle = Mathf.Clamp(outAngle, minAngle, maxAngle);
-            UpdateGameObject();
-
-        }
-
-        //-------------------------------------------------
-        // Updates the LinearMapping value from the angle
-        //-------------------------------------------------
-        private void UpdateGameObject()
+		//-------------------------------------------------
+		// Updates the LinearMapping value from the angle
+		//-------------------------------------------------
+		private void UpdateGameObject()
 		{
-            
-            if ( rotateGameObject )
+			if ( rotateGameObject )
 			{
 				transform.localRotation = start * Quaternion.AngleAxis( outAngle, localPlaneNormal );
 			}
@@ -464,17 +422,14 @@ namespace Valve.VR.InteractionSystem
 		}
 
 
+		//-------------------------------------------------
+		// Computes the angle to rotate the game object based on the change in the transform
+		//-------------------------------------------------
+		private void ComputeAngle( Hand hand )
+		{
+			Vector3 toHandProjected = ComputeToTransformProjected( hand.hoverSphereTransform );
 
-        //-------------------------------------------------
-        // Computes the angle to rotate the game object based on the change in the transform
-        //-------------------------------------------------
-        private void ComputeAngle( Hand hand )
-        {
-            velocity = 0;
-            Vector3 toHandProjected = ComputeToTransformProjected( hand.hoverSphereTransform );
-
-
-            if ( !toHandProjected.Equals( lastHandProjected ) )
+			if ( !toHandProjected.Equals( lastHandProjected ) )
 			{
 				float absAngleDelta = Vector3.Angle( lastHandProjected, toHandProjected );
 
@@ -510,83 +465,62 @@ namespace Valve.VR.InteractionSystem
 
 						float signedAngleDelta = absAngleDelta;
 
-						if (dot < 0.0f)
+						if ( dot < 0.0f )
 						{
 							signedAngleDelta = -signedAngleDelta;
 						}
 
-						float angleTmp = Mathf.Clamp( outAngle + signedAngleDelta, minAngle, maxAngle );
-                        //outAngle = angleTmp;
-
-						if ( outAngle == minAngle )
+						if ( limited )
 						{
-							if ( angleTmp > minAngle && absAngleDelta < minMaxAngularThreshold )
+							float angleTmp = Mathf.Clamp( outAngle + signedAngleDelta, minAngle, maxAngle );
+
+							if ( outAngle == minAngle )
+							{
+								if ( angleTmp > minAngle && absAngleDelta < minMaxAngularThreshold )
+								{
+									outAngle = angleTmp;
+									lastHandProjected = toHandProjected;
+								}
+							}
+							else if ( outAngle == maxAngle )
+							{
+								if ( angleTmp < maxAngle && absAngleDelta < minMaxAngularThreshold )
+								{
+									outAngle = angleTmp;
+									lastHandProjected = toHandProjected;
+								}
+							}
+							else if ( angleTmp == minAngle )
+							{
+								outAngle = angleTmp;
+								lastHandProjected = toHandProjected;
+								onMinAngle.Invoke();
+								if ( freezeOnMin )
+								{
+									Freeze( hand );
+								}
+							}
+							else if ( angleTmp == maxAngle )
+							{
+								outAngle = angleTmp;
+								lastHandProjected = toHandProjected;
+								onMaxAngle.Invoke();
+								if ( freezeOnMax )
+								{
+									Freeze( hand );
+								}
+							}
+							else
 							{
 								outAngle = angleTmp;
 								lastHandProjected = toHandProjected;
 							}
 						}
-						else if ( outAngle == maxAngle )
-						{
-							if ( angleTmp < maxAngle && absAngleDelta < minMaxAngularThreshold )
-							{
-								outAngle = angleTmp;
-								lastHandProjected = toHandProjected;
-                                onMaxAngle.Invoke();
-
-                            }
-                        }
-						else if ( angleTmp == minAngle )
-						{
-							outAngle = angleTmp;
-							lastHandProjected = toHandProjected;
-							onMinAngle.Invoke();
-							if ( freezeOnMin )
-							{
-								Freeze( hand );
-							}
-						}
-						else if ( angleTmp == maxAngle )
-						{
-							outAngle = angleTmp;
-							lastHandProjected = toHandProjected;
-                            onMaxAngle.Invoke();
-
-                            if ( freezeOnMax )
-							{
-								Freeze( hand );
-							}
-						}
-						else
-						{
-							outAngle = angleTmp;
-							lastHandProjected = toHandProjected;
-						}
-
-                        float delta = outAngle - currentAngleStep;
-                        if (Mathf.Abs(delta) > angleStep)
-                        {
-                            currentAngleStep = outAngle;
-                            StartCoroutine(HapticPulses(hand.controller, .5f, 5));
-
-                        }
-
-
-                        currentlyClosed = angleTmp == maxAngle;
-						/*
 						else
 						{
 							outAngle += signedAngleDelta;
 							lastHandProjected = toHandProjected;
 						}
-                        */
-                        
-
-                        if (oven._doorClosed && !currentlyClosed)
-                        {
-                            oven.doorOpened();
-
-                        }
 					}
 				}
 			}
